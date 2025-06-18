@@ -6,13 +6,13 @@ export class User {
   ) {}
 
   static create({
-    id,
     email,
     name,
+    id,
   }: {
-    id?: number;
     email: string;
     name: string;
+    id?: number;
   }): User {
     return new User(email, name, id);
   }

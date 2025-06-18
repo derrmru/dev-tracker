@@ -1,13 +1,5 @@
-export type Nullable<T> = T | null;
+export type Nullable<T> = T | null | undefined;
 
-export function isNullOrUndefined<T>(
-  value: T | undefined | null
-): value is undefined | null {
-  return value === null || value === undefined;
-}
-
-export function isNotNullOrUndefined<T>(
-  value: T | undefined | null
-): value is T {
-  return !isNullOrUndefined(value);
+export function isDefined<T>(value: T | null | undefined): value is T {
+  return value !== null && value !== undefined;
 }
