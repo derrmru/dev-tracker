@@ -4,8 +4,6 @@ import { CreateUserUseCaseRequest } from "../services/CreateUser/application/Cre
 import { CreateUserUseCase } from "../services/CreateUser/application/CreateUserUseCase";
 import { SqlUserRepository } from "../services/shared/infrastructure/SqlUserRepository";
 import express from "express";
-import { ValidationResult } from "../services/bases/ValidationResult";
-import { UseCaseError } from "../services/bases/UseCaseError";
 
 export const router = express.Router({ mergeParams: true });
 
@@ -16,8 +14,8 @@ router.post("/create", async (req, res, next) => {
     const createUserUseCase = new CreateUserUseCase(userRepository);
     const user = await createUserUseCase.execute(request);
     res.status(200).json(user);
-  } catch (validationResult) {
-    next(validationResult);
+  } catch (error) {
+    next(error);
   }
 });
 

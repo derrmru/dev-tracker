@@ -1,5 +1,4 @@
 import { BaseUseCase } from "../../bases/BaseUseCase";
-import { UseCaseErrorOr } from "../../bases/UseCaseError";
 import { User } from "../../shared/domain/User";
 import { SqlUserRepository } from "../../shared/infrastructure/SqlUserRepository";
 import { CreateUserUseCaseRequest } from "./CreateUserUseCaseRequest";
