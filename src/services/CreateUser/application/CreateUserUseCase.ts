@@ -1,4 +1,5 @@
 import { BaseUseCase } from "../../bases/BaseUseCase";
+import { UseCaseErrorOr } from "../../bases/UseCaseError";
 import { User } from "../../shared/domain/User";
 import { SqlUserRepository } from "../../shared/infrastructure/SqlUserRepository";
 import { CreateUserUseCaseRequest } from "./CreateUserUseCaseRequest";
@@ -15,6 +16,10 @@ export class CreateUserUseCase extends BaseUseCase<
   async execute(
     request: CreateUserUseCaseRequest
   ): Promise<CreateUserUseCaseResponse> {
+    const validationResult = request.validate();
+    if (!validationResult.isValid()) {
+      throw validationResult;
+    }
     const newUser = await this.userRepository.create(
       User.create({
         email: request.getEmail(),

@@ -4,26 +4,21 @@ import { CreateUserUseCaseRequest } from "../services/CreateUser/application/Cre
 import { CreateUserUseCase } from "../services/CreateUser/application/CreateUserUseCase";
 import { SqlUserRepository } from "../services/shared/infrastructure/SqlUserRepository";
 import express from "express";
+import { ValidationResult } from "../services/bases/ValidationResult";
+import { UseCaseError } from "../services/bases/UseCaseError";
 
 export const router = express.Router({ mergeParams: true });
 
-router.post("/create", async (req, res) => {
-  const userRepository = new SqlUserRepository(prisma);
-  const request = new CreateUserUseCaseRequest(req.body.name, req.body.email);
-  const validationResult = request.validate();
-  if (!validationResult.isValid()) {
-    res.status(422).json({
-      message: "Validation failed",
-      errors: validationResult.getErrors().map((error) => ({
-        message: error.getMessage(),
-        code: error.getCode(),
-      })),
-    });
-    return;
+router.post("/create", async (req, res, next) => {
+  try {
+    const userRepository = new SqlUserRepository(prisma);
+    const request = new CreateUserUseCaseRequest(req.body.name, req.body.email);
+    const createUserUseCase = new CreateUserUseCase(userRepository);
+    const user = await createUserUseCase.execute(request);
+    res.status(200).json(user);
+  } catch (validationResult) {
+    next(validationResult);
   }
-  const createUserUseCase = new CreateUserUseCase(userRepository);
-  const user = await createUserUseCase.execute(request);
-  res.status(200).json(user);
 });
 
 router.get("/all", async (req, res) => {

@@ -2,6 +2,7 @@ import express from "express";
 import { prismaMiddleware } from "./middleware/prisma";
 import { router as users } from "./routes/User";
 import { corsOptions } from "./middleware/cors";
+import { errorHandler } from "./middleware/errorHandler";
 import cors from "cors";
 import helmet from "helmet";
 
@@ -19,6 +20,8 @@ app.use("/users", users);
 app.use((_req, res, _next) => {
   res.status(404).send("Sorry can't find that!");
 });
+
+app.use(errorHandler as express.ErrorRequestHandler);
 
 app.listen(port, () => {
   return console.log(

@@ -1,5 +1,7 @@
 import { UseCaseError } from "./UseCaseError";
 
+export type ValidationResultOr<T> = T | ValidationResult;
+
 export class ValidationResult {
   private errors: UseCaseError[] = [];
 

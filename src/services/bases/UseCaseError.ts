@@ -1,3 +1,5 @@
+export type UseCaseErrorOr<T> = T | UseCaseError;
+
 export class UseCaseError {
   private readonly message: string;
   private readonly code: number;
