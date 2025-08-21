@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "nodemon --exec ts-node ./src/index.ts",
-    "build": "tsc --outDir build"
+    "build": "tsc --outDir build",
+    "test": "jest --config jest.config.js"
   },
   "keywords": [],
   "author": "",
@@ -20,8 +21,10 @@
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.2",
+    "@types/jest": "^30.0.0",
     "nodemon": "^3.1.10",
     "prisma": "^6.9.0",
+    "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
