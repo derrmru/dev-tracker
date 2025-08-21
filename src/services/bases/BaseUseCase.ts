@@ -1,4 +1,9 @@
-export abstract class BaseUseCase<IRequest, IResponse> {
+import { BaseUseCaseRequest } from "./BaseUseCaseRequest";
+
+export abstract class BaseUseCase<
+  IRequest extends BaseUseCaseRequest,
+  IResponse
+> {
   abstract execute(request: IRequest): Promise<IResponse>;
 
   run(request: IRequest): Promise<IResponse> {
@@ -8,6 +13,10 @@ export abstract class BaseUseCase<IRequest, IResponse> {
         startTime
       ).toISOString()}`
     );
+    const validationResult = request.validate();
+    if (!validationResult.isValid()) {
+      throw validationResult;
+    }
     const result = this.execute(request);
     const endTime = performance.now();
     console.log(

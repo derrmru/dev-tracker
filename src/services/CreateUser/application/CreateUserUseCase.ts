@@ -15,10 +15,6 @@ export class CreateUserUseCase extends BaseUseCase<
   async execute(
     request: CreateUserUseCaseRequest
   ): Promise<CreateUserUseCaseResponse> {
-    const validationResult = request.validate();
-    if (!validationResult.isValid()) {
-      throw validationResult;
-    }
     const newUser = await this.userRepository.create(
       User.create({
         email: request.getEmail(),
@@ -29,7 +25,7 @@ export class CreateUserUseCase extends BaseUseCase<
       throw new Error("Failed to create user");
     }
     return CreateUserUseCaseResponse.create({
-      userId: newUser.getId()?.toString() || "",
+      userId: newUser.getId()?.toString() ?? "",
     });
   }
 }

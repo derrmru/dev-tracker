@@ -6,7 +6,29 @@ export class SqlUserRepository {
   constructor(private readonly prisma: any) {}
 
   async findAll(): Promise<User[]> {
-    return await this.prisma.user.findMany();
+    console.log("Finding all users");
+    try {
+      const result = await this.prisma.$transaction(
+        async (tx: Prisma.TransactionClient) => {
+          return await tx.user.findMany();
+        }
+      );
+      console.log("Found users:", result);
+      if (!result || result.length === 0) {
+        return [];
+      }
+      const users = result.map((user: any) =>
+        User.create({
+          id: user.id,
+          email: user.email,
+          name: user.name,
+        })
+      );
+      return users;
+    } catch (error) {
+      console.error("Error finding users:", error);
+      throw new Error("Failed to find users");
+    }
   }
 
   async findById(id: number): Promise<Nullable<User>> {
