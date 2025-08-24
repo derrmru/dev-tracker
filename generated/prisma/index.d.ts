@@ -14,10 +14,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model User
+ * Model Child
  * 
  */
-export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+export type Child = $Result.DefaultSelection<Prisma.$ChildPayload>
 /**
  * Model Words
  * 
@@ -31,8 +31,8 @@ export type Words = $Result.DefaultSelection<Prisma.$WordsPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Children
+ * const children = await prisma.child.findMany()
  * ```
  *
  *
@@ -52,8 +52,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Children
+   * const children = await prisma.child.findMany()
    * ```
    *
    *
@@ -150,14 +150,14 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.user`: Exposes CRUD operations for the **User** model.
+   * `prisma.child`: Exposes CRUD operations for the **Child** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.user.findMany()
+    * // Fetch zero or more Children
+    * const children = await prisma.child.findMany()
     * ```
     */
-  get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+  get child(): Prisma.ChildDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.words`: Exposes CRUD operations for the **Words** model.
@@ -608,7 +608,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User',
+    Child: 'Child',
     Words: 'Words'
   };
 
@@ -628,81 +628,81 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "words"
+      modelProps: "child" | "words"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      User: {
-        payload: Prisma.$UserPayload<ExtArgs>
-        fields: Prisma.UserFieldRefs
+      Child: {
+        payload: Prisma.$ChildPayload<ExtArgs>
+        fields: Prisma.ChildFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+            args: Prisma.ChildFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.ChildFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload>
           }
           findFirst: {
-            args: Prisma.UserFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+            args: Prisma.ChildFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.ChildFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload>
           }
           findMany: {
-            args: Prisma.UserFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+            args: Prisma.ChildFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload>[]
           }
           create: {
-            args: Prisma.UserCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.ChildCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload>
           }
           createMany: {
-            args: Prisma.UserCreateManyArgs<ExtArgs>
+            args: Prisma.ChildCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.UserCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+            args: Prisma.ChildCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload>[]
           }
           delete: {
-            args: Prisma.UserDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.ChildDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload>
           }
           update: {
-            args: Prisma.UserUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.ChildUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload>
           }
           deleteMany: {
-            args: Prisma.UserDeleteManyArgs<ExtArgs>
+            args: Prisma.ChildDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.UserUpdateManyArgs<ExtArgs>
+            args: Prisma.ChildUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+            args: Prisma.ChildUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload>[]
           }
           upsert: {
-            args: Prisma.UserUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+            args: Prisma.ChildUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChildPayload>
           }
           aggregate: {
-            args: Prisma.UserAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUser>
+            args: Prisma.ChildAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateChild>
           }
           groupBy: {
-            args: Prisma.UserGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserGroupByOutputType>[]
+            args: Prisma.ChildGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ChildGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserCountArgs<ExtArgs>
-            result: $Utils.Optional<UserCountAggregateOutputType> | number
+            args: Prisma.ChildCountArgs<ExtArgs>
+            result: $Utils.Optional<ChildCountAggregateOutputType> | number
           }
         }
       }
@@ -864,7 +864,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    user?: UserOmit
+    child?: ChildOmit
     words?: WordsOmit
   }
 
@@ -956,32 +956,32 @@ export namespace Prisma {
 
 
   /**
-   * Count Type UserCountOutputType
+   * Count Type ChildCountOutputType
    */
 
-  export type UserCountOutputType = {
-    Words: number
+  export type ChildCountOutputType = {
+    words: number
   }
 
-  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Words?: boolean | UserCountOutputTypeCountWordsArgs
+  export type ChildCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    words?: boolean | ChildCountOutputTypeCountWordsArgs
   }
 
   // Custom InputTypes
   /**
-   * UserCountOutputType without action
+   * ChildCountOutputType without action
    */
-  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserCountOutputType
+     * Select specific fields to fetch from the ChildCountOutputType
      */
-    select?: UserCountOutputTypeSelect<ExtArgs> | null
+    select?: ChildCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * UserCountOutputType without action
+   * ChildCountOutputType without action
    */
-  export type UserCountOutputTypeCountWordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildCountOutputTypeCountWordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WordsWhereInput
   }
 
@@ -991,356 +991,356 @@ export namespace Prisma {
    */
 
   /**
-   * Model User
+   * Model Child
    */
 
-  export type AggregateUser = {
-    _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
-    _min: UserMinAggregateOutputType | null
-    _max: UserMaxAggregateOutputType | null
+  export type AggregateChild = {
+    _count: ChildCountAggregateOutputType | null
+    _avg: ChildAvgAggregateOutputType | null
+    _sum: ChildSumAggregateOutputType | null
+    _min: ChildMinAggregateOutputType | null
+    _max: ChildMaxAggregateOutputType | null
   }
 
-  export type UserAvgAggregateOutputType = {
+  export type ChildAvgAggregateOutputType = {
     id: number | null
   }
 
-  export type UserSumAggregateOutputType = {
+  export type ChildSumAggregateOutputType = {
     id: number | null
   }
 
-  export type UserMinAggregateOutputType = {
+  export type ChildMinAggregateOutputType = {
     id: number | null
-    email: string | null
     name: string | null
+    dateOfBirth: Date | null
   }
 
-  export type UserMaxAggregateOutputType = {
+  export type ChildMaxAggregateOutputType = {
     id: number | null
-    email: string | null
     name: string | null
+    dateOfBirth: Date | null
   }
 
-  export type UserCountAggregateOutputType = {
+  export type ChildCountAggregateOutputType = {
     id: number
-    email: number
     name: number
+    dateOfBirth: number
     _all: number
   }
 
 
-  export type UserAvgAggregateInputType = {
+  export type ChildAvgAggregateInputType = {
     id?: true
   }
 
-  export type UserSumAggregateInputType = {
+  export type ChildSumAggregateInputType = {
     id?: true
   }
 
-  export type UserMinAggregateInputType = {
+  export type ChildMinAggregateInputType = {
     id?: true
-    email?: true
     name?: true
+    dateOfBirth?: true
   }
 
-  export type UserMaxAggregateInputType = {
+  export type ChildMaxAggregateInputType = {
     id?: true
-    email?: true
     name?: true
+    dateOfBirth?: true
   }
 
-  export type UserCountAggregateInputType = {
+  export type ChildCountAggregateInputType = {
     id?: true
-    email?: true
     name?: true
+    dateOfBirth?: true
     _all?: true
   }
 
-  export type UserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which User to aggregate.
+     * Filter which Child to aggregate.
      */
-    where?: UserWhereInput
+    where?: ChildWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of Children to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: ChildOrderByWithRelationInput | ChildOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: ChildWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` Children from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` Children.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Users
+     * Count returned Children
     **/
-    _count?: true | UserCountAggregateInputType
+    _count?: true | ChildCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: UserAvgAggregateInputType
+    _avg?: ChildAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: UserSumAggregateInputType
+    _sum?: ChildSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserMinAggregateInputType
+    _min?: ChildMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserMaxAggregateInputType
+    _max?: ChildMaxAggregateInputType
   }
 
-  export type GetUserAggregateType<T extends UserAggregateArgs> = {
-        [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
+  export type GetChildAggregateType<T extends ChildAggregateArgs> = {
+        [P in keyof T & keyof AggregateChild]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUser[P]>
-      : GetScalarType<T[P], AggregateUser[P]>
+        : GetScalarType<T[P], AggregateChild[P]>
+      : GetScalarType<T[P], AggregateChild[P]>
   }
 
 
 
 
-  export type UserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-    orderBy?: UserOrderByWithAggregationInput | UserOrderByWithAggregationInput[]
-    by: UserScalarFieldEnum[] | UserScalarFieldEnum
-    having?: UserScalarWhereWithAggregatesInput
+  export type ChildGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChildWhereInput
+    orderBy?: ChildOrderByWithAggregationInput | ChildOrderByWithAggregationInput[]
+    by: ChildScalarFieldEnum[] | ChildScalarFieldEnum
+    having?: ChildScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
-    _min?: UserMinAggregateInputType
-    _max?: UserMaxAggregateInputType
+    _count?: ChildCountAggregateInputType | true
+    _avg?: ChildAvgAggregateInputType
+    _sum?: ChildSumAggregateInputType
+    _min?: ChildMinAggregateInputType
+    _max?: ChildMaxAggregateInputType
   }
 
-  export type UserGroupByOutputType = {
+  export type ChildGroupByOutputType = {
     id: number
-    email: string
     name: string
-    _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
-    _min: UserMinAggregateOutputType | null
-    _max: UserMaxAggregateOutputType | null
+    dateOfBirth: Date
+    _count: ChildCountAggregateOutputType | null
+    _avg: ChildAvgAggregateOutputType | null
+    _sum: ChildSumAggregateOutputType | null
+    _min: ChildMinAggregateOutputType | null
+    _max: ChildMaxAggregateOutputType | null
   }
 
-  type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
+  type GetChildGroupByPayload<T extends ChildGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserGroupByOutputType, T['by']> &
+      PickEnumerable<ChildGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ChildGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserGroupByOutputType[P]>
-            : GetScalarType<T[P], UserGroupByOutputType[P]>
+              : GetScalarType<T[P], ChildGroupByOutputType[P]>
+            : GetScalarType<T[P], ChildGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ChildSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    email?: boolean
     name?: boolean
-    Words?: boolean | User$WordsArgs<ExtArgs>
-    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["user"]>
+    dateOfBirth?: boolean
+    words?: boolean | Child$wordsArgs<ExtArgs>
+    _count?: boolean | ChildCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["child"]>
 
-  export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ChildSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    email?: boolean
     name?: boolean
-  }, ExtArgs["result"]["user"]>
+    dateOfBirth?: boolean
+  }, ExtArgs["result"]["child"]>
 
-  export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ChildSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    email?: boolean
     name?: boolean
-  }, ExtArgs["result"]["user"]>
+    dateOfBirth?: boolean
+  }, ExtArgs["result"]["child"]>
 
-  export type UserSelectScalar = {
+  export type ChildSelectScalar = {
     id?: boolean
-    email?: boolean
     name?: boolean
+    dateOfBirth?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name", ExtArgs["result"]["user"]>
-  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Words?: boolean | User$WordsArgs<ExtArgs>
-    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  export type ChildOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "dateOfBirth", ExtArgs["result"]["child"]>
+  export type ChildInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    words?: boolean | Child$wordsArgs<ExtArgs>
+    _count?: boolean | ChildCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ChildIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ChildIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "User"
+  export type $ChildPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Child"
     objects: {
-      Words: Prisma.$WordsPayload<ExtArgs>[]
+      words: Prisma.$WordsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      email: string
       name: string
-    }, ExtArgs["result"]["user"]>
+      dateOfBirth: Date
+    }, ExtArgs["result"]["child"]>
     composites: {}
   }
 
-  type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
+  type ChildGetPayload<S extends boolean | null | undefined | ChildDefaultArgs> = $Result.GetResult<Prisma.$ChildPayload, S>
 
-  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserCountAggregateInputType | true
+  type ChildCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ChildFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ChildCountAggregateInputType | true
     }
 
-  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User'], meta: { name: 'User' } }
+  export interface ChildDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Child'], meta: { name: 'Child' } }
     /**
-     * Find zero or one User that matches the filter.
-     * @param {UserFindUniqueArgs} args - Arguments to find a User
+     * Find zero or one Child that matches the filter.
+     * @param {ChildFindUniqueArgs} args - Arguments to find a Child
      * @example
-     * // Get one User
-     * const user = await prisma.user.findUnique({
+     * // Get one Child
+     * const child = await prisma.child.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends UserFindUniqueArgs>(args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ChildFindUniqueArgs>(args: SelectSubset<T, ChildFindUniqueArgs<ExtArgs>>): Prisma__ChildClient<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one User that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Child that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
+     * @param {ChildFindUniqueOrThrowArgs} args - Arguments to find a Child
      * @example
-     * // Get one User
-     * const user = await prisma.user.findUniqueOrThrow({
+     * // Get one Child
+     * const child = await prisma.child.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ChildFindUniqueOrThrowArgs>(args: SelectSubset<T, ChildFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ChildClient<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first User that matches the filter.
+     * Find the first Child that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindFirstArgs} args - Arguments to find a User
+     * @param {ChildFindFirstArgs} args - Arguments to find a Child
      * @example
-     * // Get one User
-     * const user = await prisma.user.findFirst({
+     * // Get one Child
+     * const child = await prisma.child.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends UserFindFirstArgs>(args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ChildFindFirstArgs>(args?: SelectSubset<T, ChildFindFirstArgs<ExtArgs>>): Prisma__ChildClient<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first User that matches the filter or
+     * Find the first Child that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindFirstOrThrowArgs} args - Arguments to find a User
+     * @param {ChildFindFirstOrThrowArgs} args - Arguments to find a Child
      * @example
-     * // Get one User
-     * const user = await prisma.user.findFirstOrThrow({
+     * // Get one Child
+     * const child = await prisma.child.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ChildFindFirstOrThrowArgs>(args?: SelectSubset<T, ChildFindFirstOrThrowArgs<ExtArgs>>): Prisma__ChildClient<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Users that matches the filter.
+     * Find zero or more Children that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ChildFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Users
-     * const users = await prisma.user.findMany()
+     * // Get all Children
+     * const children = await prisma.child.findMany()
      * 
-     * // Get first 10 Users
-     * const users = await prisma.user.findMany({ take: 10 })
+     * // Get first 10 Children
+     * const children = await prisma.child.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
+     * const childWithIdOnly = await prisma.child.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ChildFindManyArgs>(args?: SelectSubset<T, ChildFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a User.
-     * @param {UserCreateArgs} args - Arguments to create a User.
+     * Create a Child.
+     * @param {ChildCreateArgs} args - Arguments to create a Child.
      * @example
-     * // Create one User
-     * const User = await prisma.user.create({
+     * // Create one Child
+     * const Child = await prisma.child.create({
      *   data: {
-     *     // ... data to create a User
+     *     // ... data to create a Child
      *   }
      * })
      * 
      */
-    create<T extends UserCreateArgs>(args: SelectSubset<T, UserCreateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ChildCreateArgs>(args: SelectSubset<T, ChildCreateArgs<ExtArgs>>): Prisma__ChildClient<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Users.
-     * @param {UserCreateManyArgs} args - Arguments to create many Users.
+     * Create many Children.
+     * @param {ChildCreateManyArgs} args - Arguments to create many Children.
      * @example
-     * // Create many Users
-     * const user = await prisma.user.createMany({
+     * // Create many Children
+     * const child = await prisma.child.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends UserCreateManyArgs>(args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ChildCreateManyArgs>(args?: SelectSubset<T, ChildCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Users and returns the data saved in the database.
-     * @param {UserCreateManyAndReturnArgs} args - Arguments to create many Users.
+     * Create many Children and returns the data saved in the database.
+     * @param {ChildCreateManyAndReturnArgs} args - Arguments to create many Children.
      * @example
-     * // Create many Users
-     * const user = await prisma.user.createManyAndReturn({
+     * // Create many Children
+     * const child = await prisma.child.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.createManyAndReturn({
+     * // Create many Children and only return the `id`
+     * const childWithIdOnly = await prisma.child.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1350,28 +1350,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ChildCreateManyAndReturnArgs>(args?: SelectSubset<T, ChildCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a User.
-     * @param {UserDeleteArgs} args - Arguments to delete one User.
+     * Delete a Child.
+     * @param {ChildDeleteArgs} args - Arguments to delete one Child.
      * @example
-     * // Delete one User
-     * const User = await prisma.user.delete({
+     * // Delete one Child
+     * const Child = await prisma.child.delete({
      *   where: {
-     *     // ... filter to delete one User
+     *     // ... filter to delete one Child
      *   }
      * })
      * 
      */
-    delete<T extends UserDeleteArgs>(args: SelectSubset<T, UserDeleteArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ChildDeleteArgs>(args: SelectSubset<T, ChildDeleteArgs<ExtArgs>>): Prisma__ChildClient<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one User.
-     * @param {UserUpdateArgs} args - Arguments to update one User.
+     * Update one Child.
+     * @param {ChildUpdateArgs} args - Arguments to update one Child.
      * @example
-     * // Update one User
-     * const user = await prisma.user.update({
+     * // Update one Child
+     * const child = await prisma.child.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1381,30 +1381,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserUpdateArgs>(args: SelectSubset<T, UserUpdateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ChildUpdateArgs>(args: SelectSubset<T, ChildUpdateArgs<ExtArgs>>): Prisma__ChildClient<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Users.
-     * @param {UserDeleteManyArgs} args - Arguments to filter Users to delete.
+     * Delete zero or more Children.
+     * @param {ChildDeleteManyArgs} args - Arguments to filter Children to delete.
      * @example
-     * // Delete a few Users
-     * const { count } = await prisma.user.deleteMany({
+     * // Delete a few Children
+     * const { count } = await prisma.child.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends UserDeleteManyArgs>(args?: SelectSubset<T, UserDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ChildDeleteManyArgs>(args?: SelectSubset<T, ChildDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Users.
+     * Update zero or more Children.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ChildUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Users
-     * const user = await prisma.user.updateMany({
+     * // Update many Children
+     * const child = await prisma.child.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1414,14 +1414,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ChildUpdateManyArgs>(args: SelectSubset<T, ChildUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Users and returns the data updated in the database.
-     * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
+     * Update zero or more Children and returns the data updated in the database.
+     * @param {ChildUpdateManyAndReturnArgs} args - Arguments to update many Children.
      * @example
-     * // Update many Users
-     * const user = await prisma.user.updateManyAndReturn({
+     * // Update many Children
+     * const child = await prisma.child.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1430,8 +1430,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
+     * // Update zero or more Children and only return the `id`
+     * const childWithIdOnly = await prisma.child.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -1444,56 +1444,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends UserUpdateManyAndReturnArgs>(args: SelectSubset<T, UserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ChildUpdateManyAndReturnArgs>(args: SelectSubset<T, ChildUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one User.
-     * @param {UserUpsertArgs} args - Arguments to update or create a User.
+     * Create or update one Child.
+     * @param {ChildUpsertArgs} args - Arguments to update or create a Child.
      * @example
-     * // Update or create a User
-     * const user = await prisma.user.upsert({
+     * // Update or create a Child
+     * const child = await prisma.child.upsert({
      *   create: {
-     *     // ... data to create a User
+     *     // ... data to create a Child
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the User we want to update
+     *     // ... the filter for the Child we want to update
      *   }
      * })
      */
-    upsert<T extends UserUpsertArgs>(args: SelectSubset<T, UserUpsertArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ChildUpsertArgs>(args: SelectSubset<T, ChildUpsertArgs<ExtArgs>>): Prisma__ChildClient<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Users.
+     * Count the number of Children.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserCountArgs} args - Arguments to filter Users to count.
+     * @param {ChildCountArgs} args - Arguments to filter Children to count.
      * @example
-     * // Count the number of Users
-     * const count = await prisma.user.count({
+     * // Count the number of Children
+     * const count = await prisma.child.count({
      *   where: {
-     *     // ... the filter for the Users we want to count
+     *     // ... the filter for the Children we want to count
      *   }
      * })
     **/
-    count<T extends UserCountArgs>(
-      args?: Subset<T, UserCountArgs>,
+    count<T extends ChildCountArgs>(
+      args?: Subset<T, ChildCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserCountAggregateOutputType>
+          : GetScalarType<T['select'], ChildCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a User.
+     * Allows you to perform aggregations operations on a Child.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ChildAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1513,13 +1513,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserAggregateArgs>(args: Subset<T, UserAggregateArgs>): Prisma.PrismaPromise<GetUserAggregateType<T>>
+    aggregate<T extends ChildAggregateArgs>(args: Subset<T, ChildAggregateArgs>): Prisma.PrismaPromise<GetChildAggregateType<T>>
 
     /**
-     * Group by User.
+     * Group by Child.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserGroupByArgs} args - Group by arguments.
+     * @param {ChildGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1534,14 +1534,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserGroupByArgs,
+      T extends ChildGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserGroupByArgs['orderBy'] }
-        : { orderBy?: UserGroupByArgs['orderBy'] },
+        ? { orderBy: ChildGroupByArgs['orderBy'] }
+        : { orderBy?: ChildGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1590,22 +1590,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ChildGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChildGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the User model
+   * Fields of the Child model
    */
-  readonly fields: UserFieldRefs;
+  readonly fields: ChildFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for User.
+   * The delegate class that acts as a "Promise-like" for Child.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ChildClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Words<T extends User$WordsArgs<ExtArgs> = {}>(args?: Subset<T, User$WordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WordsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    words<T extends Child$wordsArgs<ExtArgs> = {}>(args?: Subset<T, Child$wordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WordsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1632,403 +1632,403 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the User model
+   * Fields of the Child model
    */
-  interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'Int'>
-    readonly email: FieldRef<"User", 'String'>
-    readonly name: FieldRef<"User", 'String'>
+  interface ChildFieldRefs {
+    readonly id: FieldRef<"Child", 'Int'>
+    readonly name: FieldRef<"Child", 'String'>
+    readonly dateOfBirth: FieldRef<"Child", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * User findUnique
+   * Child findUnique
    */
-  export type UserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ChildSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: ChildInclude<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Filter, which Child to fetch.
      */
-    where: UserWhereUniqueInput
+    where: ChildWhereUniqueInput
   }
 
   /**
-   * User findUniqueOrThrow
+   * Child findUniqueOrThrow
    */
-  export type UserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ChildSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: ChildInclude<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Filter, which Child to fetch.
      */
-    where: UserWhereUniqueInput
+    where: ChildWhereUniqueInput
   }
 
   /**
-   * User findFirst
+   * Child findFirst
    */
-  export type UserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ChildSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: ChildInclude<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Filter, which Child to fetch.
      */
-    where?: UserWhereInput
+    where?: ChildWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of Children to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: ChildOrderByWithRelationInput | ChildOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Users.
+     * Sets the position for searching for Children.
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: ChildWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` Children from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` Children.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Users.
+     * Filter by unique combinations of Children.
      */
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+    distinct?: ChildScalarFieldEnum | ChildScalarFieldEnum[]
   }
 
   /**
-   * User findFirstOrThrow
+   * Child findFirstOrThrow
    */
-  export type UserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ChildSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: ChildInclude<ExtArgs> | null
     /**
-     * Filter, which User to fetch.
+     * Filter, which Child to fetch.
      */
-    where?: UserWhereInput
+    where?: ChildWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of Children to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: ChildOrderByWithRelationInput | ChildOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Users.
+     * Sets the position for searching for Children.
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: ChildWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` Children from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` Children.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Users.
+     * Filter by unique combinations of Children.
      */
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+    distinct?: ChildScalarFieldEnum | ChildScalarFieldEnum[]
   }
 
   /**
-   * User findMany
+   * Child findMany
    */
-  export type UserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ChildSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: ChildInclude<ExtArgs> | null
     /**
-     * Filter, which Users to fetch.
+     * Filter, which Children to fetch.
      */
-    where?: UserWhereInput
+    where?: ChildWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Users to fetch.
+     * Determine the order of Children to fetch.
      */
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    orderBy?: ChildOrderByWithRelationInput | ChildOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Users.
+     * Sets the position for listing Children.
      */
-    cursor?: UserWhereUniqueInput
+    cursor?: ChildWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Users from the position of the cursor.
+     * Take `±n` Children from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Users.
+     * Skip the first `n` Children.
      */
     skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+    distinct?: ChildScalarFieldEnum | ChildScalarFieldEnum[]
   }
 
   /**
-   * User create
+   * Child create
    */
-  export type UserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ChildSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: ChildInclude<ExtArgs> | null
     /**
-     * The data needed to create a User.
+     * The data needed to create a Child.
      */
-    data: XOR<UserCreateInput, UserUncheckedCreateInput>
+    data: XOR<ChildCreateInput, ChildUncheckedCreateInput>
   }
 
   /**
-   * User createMany
+   * Child createMany
    */
-  export type UserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Users.
+     * The data used to create many Children.
      */
-    data: UserCreateManyInput | UserCreateManyInput[]
+    data: ChildCreateManyInput | ChildCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * User createManyAndReturn
+   * Child createManyAndReturn
    */
-  export type UserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ChildSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
-     * The data used to create many Users.
+     * The data used to create many Children.
      */
-    data: UserCreateManyInput | UserCreateManyInput[]
+    data: ChildCreateManyInput | ChildCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * User update
+   * Child update
    */
-  export type UserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ChildSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: ChildInclude<ExtArgs> | null
     /**
-     * The data needed to update a User.
+     * The data needed to update a Child.
      */
-    data: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+    data: XOR<ChildUpdateInput, ChildUncheckedUpdateInput>
     /**
-     * Choose, which User to update.
+     * Choose, which Child to update.
      */
-    where: UserWhereUniqueInput
+    where: ChildWhereUniqueInput
   }
 
   /**
-   * User updateMany
+   * Child updateMany
    */
-  export type UserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Users.
+     * The data used to update Children.
      */
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    data: XOR<ChildUpdateManyMutationInput, ChildUncheckedUpdateManyInput>
     /**
-     * Filter which Users to update
+     * Filter which Children to update
      */
-    where?: UserWhereInput
+    where?: ChildWhereInput
     /**
-     * Limit how many Users to update.
+     * Limit how many Children to update.
      */
     limit?: number
   }
 
   /**
-   * User updateManyAndReturn
+   * Child updateManyAndReturn
    */
-  export type UserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ChildSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
-     * The data used to update Users.
+     * The data used to update Children.
      */
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    data: XOR<ChildUpdateManyMutationInput, ChildUncheckedUpdateManyInput>
     /**
-     * Filter which Users to update
+     * Filter which Children to update
      */
-    where?: UserWhereInput
+    where?: ChildWhereInput
     /**
-     * Limit how many Users to update.
+     * Limit how many Children to update.
      */
     limit?: number
   }
 
   /**
-   * User upsert
+   * Child upsert
    */
-  export type UserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ChildSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: ChildInclude<ExtArgs> | null
     /**
-     * The filter to search for the User to update in case it exists.
+     * The filter to search for the Child to update in case it exists.
      */
-    where: UserWhereUniqueInput
+    where: ChildWhereUniqueInput
     /**
-     * In case the User found by the `where` argument doesn't exist, create a new User with this data.
+     * In case the Child found by the `where` argument doesn't exist, create a new Child with this data.
      */
-    create: XOR<UserCreateInput, UserUncheckedCreateInput>
+    create: XOR<ChildCreateInput, ChildUncheckedCreateInput>
     /**
-     * In case the User was found with the provided `where` argument, update it with this data.
+     * In case the Child was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+    update: XOR<ChildUpdateInput, ChildUncheckedUpdateInput>
   }
 
   /**
-   * User delete
+   * Child delete
    */
-  export type UserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ChildSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: ChildInclude<ExtArgs> | null
     /**
-     * Filter which User to delete.
+     * Filter which Child to delete.
      */
-    where: UserWhereUniqueInput
+    where: ChildWhereUniqueInput
   }
 
   /**
-   * User deleteMany
+   * Child deleteMany
    */
-  export type UserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Users to delete
+     * Filter which Children to delete
      */
-    where?: UserWhereInput
+    where?: ChildWhereInput
     /**
-     * Limit how many Users to delete.
+     * Limit how many Children to delete.
      */
     limit?: number
   }
 
   /**
-   * User.Words
+   * Child.words
    */
-  export type User$WordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Child$wordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Words
      */
@@ -2050,21 +2050,21 @@ export namespace Prisma {
   }
 
   /**
-   * User without action
+   * Child without action
    */
-  export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ChildDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the User
+     * Select specific fields to fetch from the Child
      */
-    select?: UserSelect<ExtArgs> | null
+    select?: ChildSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the User
+     * Omit specific fields from the Child
      */
-    omit?: UserOmit<ExtArgs> | null
+    omit?: ChildOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserInclude<ExtArgs> | null
+    include?: ChildInclude<ExtArgs> | null
   }
 
 
@@ -2081,63 +2081,73 @@ export namespace Prisma {
   }
 
   export type WordsAvgAggregateOutputType = {
-    userId: number | null
+    id: number | null
+    childId: number | null
   }
 
   export type WordsSumAggregateOutputType = {
-    userId: number | null
+    id: number | null
+    childId: number | null
   }
 
   export type WordsMinAggregateOutputType = {
+    id: number | null
     word: string | null
-    createdAt: Date | null
+    addedAt: Date | null
     lastUpdate: Date | null
-    userId: number | null
+    childId: number | null
   }
 
   export type WordsMaxAggregateOutputType = {
+    id: number | null
     word: string | null
-    createdAt: Date | null
+    addedAt: Date | null
     lastUpdate: Date | null
-    userId: number | null
+    childId: number | null
   }
 
   export type WordsCountAggregateOutputType = {
+    id: number
     word: number
-    createdAt: number
+    addedAt: number
     lastUpdate: number
-    userId: number
+    childId: number
     _all: number
   }
 
 
   export type WordsAvgAggregateInputType = {
-    userId?: true
+    id?: true
+    childId?: true
   }
 
   export type WordsSumAggregateInputType = {
-    userId?: true
+    id?: true
+    childId?: true
   }
 
   export type WordsMinAggregateInputType = {
+    id?: true
     word?: true
-    createdAt?: true
+    addedAt?: true
     lastUpdate?: true
-    userId?: true
+    childId?: true
   }
 
   export type WordsMaxAggregateInputType = {
+    id?: true
     word?: true
-    createdAt?: true
+    addedAt?: true
     lastUpdate?: true
-    userId?: true
+    childId?: true
   }
 
   export type WordsCountAggregateInputType = {
+    id?: true
     word?: true
-    createdAt?: true
+    addedAt?: true
     lastUpdate?: true
-    userId?: true
+    childId?: true
     _all?: true
   }
 
@@ -2228,10 +2238,11 @@ export namespace Prisma {
   }
 
   export type WordsGroupByOutputType = {
+    id: number
     word: string
-    createdAt: Date
+    addedAt: Date
     lastUpdate: Date
-    userId: number
+    childId: number
     _count: WordsCountAggregateOutputType | null
     _avg: WordsAvgAggregateOutputType | null
     _sum: WordsSumAggregateOutputType | null
@@ -2254,57 +2265,62 @@ export namespace Prisma {
 
 
   export type WordsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     word?: boolean
-    createdAt?: boolean
+    addedAt?: boolean
     lastUpdate?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    childId?: boolean
+    child?: boolean | ChildDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["words"]>
 
   export type WordsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     word?: boolean
-    createdAt?: boolean
+    addedAt?: boolean
     lastUpdate?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    childId?: boolean
+    child?: boolean | ChildDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["words"]>
 
   export type WordsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     word?: boolean
-    createdAt?: boolean
+    addedAt?: boolean
     lastUpdate?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    childId?: boolean
+    child?: boolean | ChildDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["words"]>
 
   export type WordsSelectScalar = {
+    id?: boolean
     word?: boolean
-    createdAt?: boolean
+    addedAt?: boolean
     lastUpdate?: boolean
-    userId?: boolean
+    childId?: boolean
   }
 
-  export type WordsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"word" | "createdAt" | "lastUpdate" | "userId", ExtArgs["result"]["words"]>
+  export type WordsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "word" | "addedAt" | "lastUpdate" | "childId", ExtArgs["result"]["words"]>
   export type WordsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    child?: boolean | ChildDefaultArgs<ExtArgs>
   }
   export type WordsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    child?: boolean | ChildDefaultArgs<ExtArgs>
   }
   export type WordsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    child?: boolean | ChildDefaultArgs<ExtArgs>
   }
 
   export type $WordsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Words"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
+      child: Prisma.$ChildPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
+      id: number
       word: string
-      createdAt: Date
+      addedAt: Date
       lastUpdate: Date
-      userId: number
+      childId: number
     }, ExtArgs["result"]["words"]>
     composites: {}
   }
@@ -2388,8 +2404,8 @@ export namespace Prisma {
      * // Get first 10 Words
      * const words = await prisma.words.findMany({ take: 10 })
      * 
-     * // Only select the `word`
-     * const wordsWithWordOnly = await prisma.words.findMany({ select: { word: true } })
+     * // Only select the `id`
+     * const wordsWithIdOnly = await prisma.words.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends WordsFindManyArgs>(args?: SelectSubset<T, WordsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WordsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -2433,9 +2449,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Words and only return the `word`
-     * const wordsWithWordOnly = await prisma.words.createManyAndReturn({
-     *   select: { word: true },
+     * // Create many Words and only return the `id`
+     * const wordsWithIdOnly = await prisma.words.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -2524,9 +2540,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Words and only return the `word`
-     * const wordsWithWordOnly = await prisma.words.updateManyAndReturn({
-     *   select: { word: true },
+     * // Update zero or more Words and only return the `id`
+     * const wordsWithIdOnly = await prisma.words.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2699,7 +2715,7 @@ export namespace Prisma {
    */
   export interface Prisma__WordsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    child<T extends ChildDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChildDefaultArgs<ExtArgs>>): Prisma__ChildClient<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2729,10 +2745,11 @@ export namespace Prisma {
    * Fields of the Words model
    */
   interface WordsFieldRefs {
+    readonly id: FieldRef<"Words", 'Int'>
     readonly word: FieldRef<"Words", 'String'>
-    readonly createdAt: FieldRef<"Words", 'DateTime'>
+    readonly addedAt: FieldRef<"Words", 'DateTime'>
     readonly lastUpdate: FieldRef<"Words", 'DateTime'>
-    readonly userId: FieldRef<"Words", 'Int'>
+    readonly childId: FieldRef<"Words", 'Int'>
   }
     
 
@@ -3161,20 +3178,21 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const UserScalarFieldEnum: {
+  export const ChildScalarFieldEnum: {
     id: 'id',
-    email: 'email',
-    name: 'name'
+    name: 'name',
+    dateOfBirth: 'dateOfBirth'
   };
 
-  export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+  export type ChildScalarFieldEnum = (typeof ChildScalarFieldEnum)[keyof typeof ChildScalarFieldEnum]
 
 
   export const WordsScalarFieldEnum: {
+    id: 'id',
     word: 'word',
-    createdAt: 'createdAt',
+    addedAt: 'addedAt',
     lastUpdate: 'lastUpdate',
-    userId: 'userId'
+    childId: 'childId'
   };
 
   export type WordsScalarFieldEnum = (typeof WordsScalarFieldEnum)[keyof typeof WordsScalarFieldEnum]
@@ -3260,89 +3278,94 @@ export namespace Prisma {
    */
 
 
-  export type UserWhereInput = {
-    AND?: UserWhereInput | UserWhereInput[]
-    OR?: UserWhereInput[]
-    NOT?: UserWhereInput | UserWhereInput[]
-    id?: IntFilter<"User"> | number
-    email?: StringFilter<"User"> | string
-    name?: StringFilter<"User"> | string
-    Words?: WordsListRelationFilter
+  export type ChildWhereInput = {
+    AND?: ChildWhereInput | ChildWhereInput[]
+    OR?: ChildWhereInput[]
+    NOT?: ChildWhereInput | ChildWhereInput[]
+    id?: IntFilter<"Child"> | number
+    name?: StringFilter<"Child"> | string
+    dateOfBirth?: DateTimeFilter<"Child"> | Date | string
+    words?: WordsListRelationFilter
   }
 
-  export type UserOrderByWithRelationInput = {
+  export type ChildOrderByWithRelationInput = {
     id?: SortOrder
-    email?: SortOrder
     name?: SortOrder
-    Words?: WordsOrderByRelationAggregateInput
+    dateOfBirth?: SortOrder
+    words?: WordsOrderByRelationAggregateInput
   }
 
-  export type UserWhereUniqueInput = Prisma.AtLeast<{
+  export type ChildWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    email?: string
-    AND?: UserWhereInput | UserWhereInput[]
-    OR?: UserWhereInput[]
-    NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringFilter<"User"> | string
-    Words?: WordsListRelationFilter
-  }, "id" | "email">
+    name_dateOfBirth?: ChildNameDateOfBirthCompoundUniqueInput
+    AND?: ChildWhereInput | ChildWhereInput[]
+    OR?: ChildWhereInput[]
+    NOT?: ChildWhereInput | ChildWhereInput[]
+    name?: StringFilter<"Child"> | string
+    dateOfBirth?: DateTimeFilter<"Child"> | Date | string
+    words?: WordsListRelationFilter
+  }, "id" | "name_dateOfBirth">
 
-  export type UserOrderByWithAggregationInput = {
+  export type ChildOrderByWithAggregationInput = {
     id?: SortOrder
-    email?: SortOrder
     name?: SortOrder
-    _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
-    _max?: UserMaxOrderByAggregateInput
-    _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
+    dateOfBirth?: SortOrder
+    _count?: ChildCountOrderByAggregateInput
+    _avg?: ChildAvgOrderByAggregateInput
+    _max?: ChildMaxOrderByAggregateInput
+    _min?: ChildMinOrderByAggregateInput
+    _sum?: ChildSumOrderByAggregateInput
   }
 
-  export type UserScalarWhereWithAggregatesInput = {
-    AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    OR?: UserScalarWhereWithAggregatesInput[]
-    NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"User"> | number
-    email?: StringWithAggregatesFilter<"User"> | string
-    name?: StringWithAggregatesFilter<"User"> | string
+  export type ChildScalarWhereWithAggregatesInput = {
+    AND?: ChildScalarWhereWithAggregatesInput | ChildScalarWhereWithAggregatesInput[]
+    OR?: ChildScalarWhereWithAggregatesInput[]
+    NOT?: ChildScalarWhereWithAggregatesInput | ChildScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Child"> | number
+    name?: StringWithAggregatesFilter<"Child"> | string
+    dateOfBirth?: DateTimeWithAggregatesFilter<"Child"> | Date | string
   }
 
   export type WordsWhereInput = {
     AND?: WordsWhereInput | WordsWhereInput[]
     OR?: WordsWhereInput[]
     NOT?: WordsWhereInput | WordsWhereInput[]
+    id?: IntFilter<"Words"> | number
     word?: StringFilter<"Words"> | string
-    createdAt?: DateTimeFilter<"Words"> | Date | string
+    addedAt?: DateTimeFilter<"Words"> | Date | string
     lastUpdate?: DateTimeFilter<"Words"> | Date | string
-    userId?: IntFilter<"Words"> | number
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    childId?: IntFilter<"Words"> | number
+    child?: XOR<ChildScalarRelationFilter, ChildWhereInput>
   }
 
   export type WordsOrderByWithRelationInput = {
+    id?: SortOrder
     word?: SortOrder
-    createdAt?: SortOrder
+    addedAt?: SortOrder
     lastUpdate?: SortOrder
-    userId?: SortOrder
-    user?: UserOrderByWithRelationInput
+    childId?: SortOrder
+    child?: ChildOrderByWithRelationInput
   }
 
   export type WordsWhereUniqueInput = Prisma.AtLeast<{
-    userId_word?: WordsUserIdWordCompoundUniqueInput
+    id?: number
+    childId_word?: WordsChildIdWordCompoundUniqueInput
     AND?: WordsWhereInput | WordsWhereInput[]
     OR?: WordsWhereInput[]
     NOT?: WordsWhereInput | WordsWhereInput[]
     word?: StringFilter<"Words"> | string
-    createdAt?: DateTimeFilter<"Words"> | Date | string
+    addedAt?: DateTimeFilter<"Words"> | Date | string
     lastUpdate?: DateTimeFilter<"Words"> | Date | string
-    userId?: IntFilter<"Words"> | number
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "userId_word">
+    childId?: IntFilter<"Words"> | number
+    child?: XOR<ChildScalarRelationFilter, ChildWhereInput>
+  }, "id" | "childId_word">
 
   export type WordsOrderByWithAggregationInput = {
+    id?: SortOrder
     word?: SortOrder
-    createdAt?: SortOrder
+    addedAt?: SortOrder
     lastUpdate?: SortOrder
-    userId?: SortOrder
+    childId?: SortOrder
     _count?: WordsCountOrderByAggregateInput
     _avg?: WordsAvgOrderByAggregateInput
     _max?: WordsMaxOrderByAggregateInput
@@ -3354,101 +3377,106 @@ export namespace Prisma {
     AND?: WordsScalarWhereWithAggregatesInput | WordsScalarWhereWithAggregatesInput[]
     OR?: WordsScalarWhereWithAggregatesInput[]
     NOT?: WordsScalarWhereWithAggregatesInput | WordsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Words"> | number
     word?: StringWithAggregatesFilter<"Words"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Words"> | Date | string
+    addedAt?: DateTimeWithAggregatesFilter<"Words"> | Date | string
     lastUpdate?: DateTimeWithAggregatesFilter<"Words"> | Date | string
-    userId?: IntWithAggregatesFilter<"Words"> | number
+    childId?: IntWithAggregatesFilter<"Words"> | number
   }
 
-  export type UserCreateInput = {
-    email: string
+  export type ChildCreateInput = {
     name: string
-    Words?: WordsCreateNestedManyWithoutUserInput
+    dateOfBirth: Date | string
+    words?: WordsCreateNestedManyWithoutChildInput
   }
 
-  export type UserUncheckedCreateInput = {
+  export type ChildUncheckedCreateInput = {
     id?: number
-    email: string
     name: string
-    Words?: WordsUncheckedCreateNestedManyWithoutUserInput
+    dateOfBirth: Date | string
+    words?: WordsUncheckedCreateNestedManyWithoutChildInput
   }
 
-  export type UserUpdateInput = {
-    email?: StringFieldUpdateOperationsInput | string
+  export type ChildUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    Words?: WordsUpdateManyWithoutUserNestedInput
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    words?: WordsUpdateManyWithoutChildNestedInput
   }
 
-  export type UserUncheckedUpdateInput = {
+  export type ChildUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    Words?: WordsUncheckedUpdateManyWithoutUserNestedInput
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    words?: WordsUncheckedUpdateManyWithoutChildNestedInput
   }
 
-  export type UserCreateManyInput = {
+  export type ChildCreateManyInput = {
     id?: number
-    email: string
     name: string
+    dateOfBirth: Date | string
   }
 
-  export type UserUpdateManyMutationInput = {
-    email?: StringFieldUpdateOperationsInput | string
+  export type ChildUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserUncheckedUpdateManyInput = {
+  export type ChildUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type WordsCreateInput = {
     word: string
-    createdAt?: Date | string
+    addedAt?: Date | string
     lastUpdate?: Date | string
-    user: UserCreateNestedOneWithoutWordsInput
+    child: ChildCreateNestedOneWithoutWordsInput
   }
 
   export type WordsUncheckedCreateInput = {
+    id?: number
     word: string
-    createdAt?: Date | string
+    addedAt?: Date | string
     lastUpdate?: Date | string
-    userId: number
+    childId: number
   }
 
   export type WordsUpdateInput = {
     word?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutWordsNestedInput
+    child?: ChildUpdateOneRequiredWithoutWordsNestedInput
   }
 
   export type WordsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
     word?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    childId?: IntFieldUpdateOperationsInput | number
   }
 
   export type WordsCreateManyInput = {
+    id?: number
     word: string
-    createdAt?: Date | string
+    addedAt?: Date | string
     lastUpdate?: Date | string
-    userId: number
+    childId: number
   }
 
   export type WordsUpdateManyMutationInput = {
     word?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type WordsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
     word?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: IntFieldUpdateOperationsInput | number
+    childId?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -3477,6 +3505,17 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type WordsListRelationFilter = {
     every?: WordsWhereInput
     some?: WordsWhereInput
@@ -3487,29 +3526,34 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type UserCountOrderByAggregateInput = {
+  export type ChildNameDateOfBirthCompoundUniqueInput = {
+    name: string
+    dateOfBirth: Date | string
+  }
+
+  export type ChildCountOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
     name?: SortOrder
+    dateOfBirth?: SortOrder
   }
 
-  export type UserAvgOrderByAggregateInput = {
+  export type ChildAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type UserMaxOrderByAggregateInput = {
+  export type ChildMaxOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
     name?: SortOrder
+    dateOfBirth?: SortOrder
   }
 
-  export type UserMinOrderByAggregateInput = {
+  export type ChildMinOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
     name?: SortOrder
+    dateOfBirth?: SortOrder
   }
 
-  export type UserSumOrderByAggregateInput = {
+  export type ChildSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
@@ -3547,56 +3591,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
-  export type WordsUserIdWordCompoundUniqueInput = {
-    userId: number
-    word: string
-  }
-
-  export type WordsCountOrderByAggregateInput = {
-    word?: SortOrder
-    createdAt?: SortOrder
-    lastUpdate?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type WordsAvgOrderByAggregateInput = {
-    userId?: SortOrder
-  }
-
-  export type WordsMaxOrderByAggregateInput = {
-    word?: SortOrder
-    createdAt?: SortOrder
-    lastUpdate?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type WordsMinOrderByAggregateInput = {
-    word?: SortOrder
-    createdAt?: SortOrder
-    lastUpdate?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type WordsSumOrderByAggregateInput = {
-    userId?: SortOrder
-  }
-
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -3611,17 +3605,61 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type WordsCreateNestedManyWithoutUserInput = {
-    create?: XOR<WordsCreateWithoutUserInput, WordsUncheckedCreateWithoutUserInput> | WordsCreateWithoutUserInput[] | WordsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: WordsCreateOrConnectWithoutUserInput | WordsCreateOrConnectWithoutUserInput[]
-    createMany?: WordsCreateManyUserInputEnvelope
+  export type ChildScalarRelationFilter = {
+    is?: ChildWhereInput
+    isNot?: ChildWhereInput
+  }
+
+  export type WordsChildIdWordCompoundUniqueInput = {
+    childId: number
+    word: string
+  }
+
+  export type WordsCountOrderByAggregateInput = {
+    id?: SortOrder
+    word?: SortOrder
+    addedAt?: SortOrder
+    lastUpdate?: SortOrder
+    childId?: SortOrder
+  }
+
+  export type WordsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    childId?: SortOrder
+  }
+
+  export type WordsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    word?: SortOrder
+    addedAt?: SortOrder
+    lastUpdate?: SortOrder
+    childId?: SortOrder
+  }
+
+  export type WordsMinOrderByAggregateInput = {
+    id?: SortOrder
+    word?: SortOrder
+    addedAt?: SortOrder
+    lastUpdate?: SortOrder
+    childId?: SortOrder
+  }
+
+  export type WordsSumOrderByAggregateInput = {
+    id?: SortOrder
+    childId?: SortOrder
+  }
+
+  export type WordsCreateNestedManyWithoutChildInput = {
+    create?: XOR<WordsCreateWithoutChildInput, WordsUncheckedCreateWithoutChildInput> | WordsCreateWithoutChildInput[] | WordsUncheckedCreateWithoutChildInput[]
+    connectOrCreate?: WordsCreateOrConnectWithoutChildInput | WordsCreateOrConnectWithoutChildInput[]
+    createMany?: WordsCreateManyChildInputEnvelope
     connect?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
   }
 
-  export type WordsUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<WordsCreateWithoutUserInput, WordsUncheckedCreateWithoutUserInput> | WordsCreateWithoutUserInput[] | WordsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: WordsCreateOrConnectWithoutUserInput | WordsCreateOrConnectWithoutUserInput[]
-    createMany?: WordsCreateManyUserInputEnvelope
+  export type WordsUncheckedCreateNestedManyWithoutChildInput = {
+    create?: XOR<WordsCreateWithoutChildInput, WordsUncheckedCreateWithoutChildInput> | WordsCreateWithoutChildInput[] | WordsUncheckedCreateWithoutChildInput[]
+    connectOrCreate?: WordsCreateOrConnectWithoutChildInput | WordsCreateOrConnectWithoutChildInput[]
+    createMany?: WordsCreateManyChildInputEnvelope
     connect?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
   }
 
@@ -3629,17 +3667,21 @@ export namespace Prisma {
     set?: string
   }
 
-  export type WordsUpdateManyWithoutUserNestedInput = {
-    create?: XOR<WordsCreateWithoutUserInput, WordsUncheckedCreateWithoutUserInput> | WordsCreateWithoutUserInput[] | WordsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: WordsCreateOrConnectWithoutUserInput | WordsCreateOrConnectWithoutUserInput[]
-    upsert?: WordsUpsertWithWhereUniqueWithoutUserInput | WordsUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: WordsCreateManyUserInputEnvelope
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type WordsUpdateManyWithoutChildNestedInput = {
+    create?: XOR<WordsCreateWithoutChildInput, WordsUncheckedCreateWithoutChildInput> | WordsCreateWithoutChildInput[] | WordsUncheckedCreateWithoutChildInput[]
+    connectOrCreate?: WordsCreateOrConnectWithoutChildInput | WordsCreateOrConnectWithoutChildInput[]
+    upsert?: WordsUpsertWithWhereUniqueWithoutChildInput | WordsUpsertWithWhereUniqueWithoutChildInput[]
+    createMany?: WordsCreateManyChildInputEnvelope
     set?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
     disconnect?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
     delete?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
     connect?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
-    update?: WordsUpdateWithWhereUniqueWithoutUserInput | WordsUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: WordsUpdateManyWithWhereWithoutUserInput | WordsUpdateManyWithWhereWithoutUserInput[]
+    update?: WordsUpdateWithWhereUniqueWithoutChildInput | WordsUpdateWithWhereUniqueWithoutChildInput[]
+    updateMany?: WordsUpdateManyWithWhereWithoutChildInput | WordsUpdateManyWithWhereWithoutChildInput[]
     deleteMany?: WordsScalarWhereInput | WordsScalarWhereInput[]
   }
 
@@ -3651,36 +3693,32 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type WordsUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<WordsCreateWithoutUserInput, WordsUncheckedCreateWithoutUserInput> | WordsCreateWithoutUserInput[] | WordsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: WordsCreateOrConnectWithoutUserInput | WordsCreateOrConnectWithoutUserInput[]
-    upsert?: WordsUpsertWithWhereUniqueWithoutUserInput | WordsUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: WordsCreateManyUserInputEnvelope
+  export type WordsUncheckedUpdateManyWithoutChildNestedInput = {
+    create?: XOR<WordsCreateWithoutChildInput, WordsUncheckedCreateWithoutChildInput> | WordsCreateWithoutChildInput[] | WordsUncheckedCreateWithoutChildInput[]
+    connectOrCreate?: WordsCreateOrConnectWithoutChildInput | WordsCreateOrConnectWithoutChildInput[]
+    upsert?: WordsUpsertWithWhereUniqueWithoutChildInput | WordsUpsertWithWhereUniqueWithoutChildInput[]
+    createMany?: WordsCreateManyChildInputEnvelope
     set?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
     disconnect?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
     delete?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
     connect?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
-    update?: WordsUpdateWithWhereUniqueWithoutUserInput | WordsUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: WordsUpdateManyWithWhereWithoutUserInput | WordsUpdateManyWithWhereWithoutUserInput[]
+    update?: WordsUpdateWithWhereUniqueWithoutChildInput | WordsUpdateWithWhereUniqueWithoutChildInput[]
+    updateMany?: WordsUpdateManyWithWhereWithoutChildInput | WordsUpdateManyWithWhereWithoutChildInput[]
     deleteMany?: WordsScalarWhereInput | WordsScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutWordsInput = {
-    create?: XOR<UserCreateWithoutWordsInput, UserUncheckedCreateWithoutWordsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutWordsInput
-    connect?: UserWhereUniqueInput
+  export type ChildCreateNestedOneWithoutWordsInput = {
+    create?: XOR<ChildCreateWithoutWordsInput, ChildUncheckedCreateWithoutWordsInput>
+    connectOrCreate?: ChildCreateOrConnectWithoutWordsInput
+    connect?: ChildWhereUniqueInput
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
-  export type UserUpdateOneRequiredWithoutWordsNestedInput = {
-    create?: XOR<UserCreateWithoutWordsInput, UserUncheckedCreateWithoutWordsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutWordsInput
-    upsert?: UserUpsertWithoutWordsInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutWordsInput, UserUpdateWithoutWordsInput>, UserUncheckedUpdateWithoutWordsInput>
+  export type ChildUpdateOneRequiredWithoutWordsNestedInput = {
+    create?: XOR<ChildCreateWithoutWordsInput, ChildUncheckedCreateWithoutWordsInput>
+    connectOrCreate?: ChildCreateOrConnectWithoutWordsInput
+    upsert?: ChildUpsertWithoutWordsInput
+    connect?: ChildWhereUniqueInput
+    update?: XOR<XOR<ChildUpdateToOneWithWhereWithoutWordsInput, ChildUpdateWithoutWordsInput>, ChildUncheckedUpdateWithoutWordsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3706,6 +3744,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -3752,17 +3801,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -3777,113 +3815,118 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type WordsCreateWithoutUserInput = {
+  export type WordsCreateWithoutChildInput = {
     word: string
-    createdAt?: Date | string
+    addedAt?: Date | string
     lastUpdate?: Date | string
   }
 
-  export type WordsUncheckedCreateWithoutUserInput = {
+  export type WordsUncheckedCreateWithoutChildInput = {
+    id?: number
     word: string
-    createdAt?: Date | string
+    addedAt?: Date | string
     lastUpdate?: Date | string
   }
 
-  export type WordsCreateOrConnectWithoutUserInput = {
+  export type WordsCreateOrConnectWithoutChildInput = {
     where: WordsWhereUniqueInput
-    create: XOR<WordsCreateWithoutUserInput, WordsUncheckedCreateWithoutUserInput>
+    create: XOR<WordsCreateWithoutChildInput, WordsUncheckedCreateWithoutChildInput>
   }
 
-  export type WordsCreateManyUserInputEnvelope = {
-    data: WordsCreateManyUserInput | WordsCreateManyUserInput[]
+  export type WordsCreateManyChildInputEnvelope = {
+    data: WordsCreateManyChildInput | WordsCreateManyChildInput[]
     skipDuplicates?: boolean
   }
 
-  export type WordsUpsertWithWhereUniqueWithoutUserInput = {
+  export type WordsUpsertWithWhereUniqueWithoutChildInput = {
     where: WordsWhereUniqueInput
-    update: XOR<WordsUpdateWithoutUserInput, WordsUncheckedUpdateWithoutUserInput>
-    create: XOR<WordsCreateWithoutUserInput, WordsUncheckedCreateWithoutUserInput>
+    update: XOR<WordsUpdateWithoutChildInput, WordsUncheckedUpdateWithoutChildInput>
+    create: XOR<WordsCreateWithoutChildInput, WordsUncheckedCreateWithoutChildInput>
   }
 
-  export type WordsUpdateWithWhereUniqueWithoutUserInput = {
+  export type WordsUpdateWithWhereUniqueWithoutChildInput = {
     where: WordsWhereUniqueInput
-    data: XOR<WordsUpdateWithoutUserInput, WordsUncheckedUpdateWithoutUserInput>
+    data: XOR<WordsUpdateWithoutChildInput, WordsUncheckedUpdateWithoutChildInput>
   }
 
-  export type WordsUpdateManyWithWhereWithoutUserInput = {
+  export type WordsUpdateManyWithWhereWithoutChildInput = {
     where: WordsScalarWhereInput
-    data: XOR<WordsUpdateManyMutationInput, WordsUncheckedUpdateManyWithoutUserInput>
+    data: XOR<WordsUpdateManyMutationInput, WordsUncheckedUpdateManyWithoutChildInput>
   }
 
   export type WordsScalarWhereInput = {
     AND?: WordsScalarWhereInput | WordsScalarWhereInput[]
     OR?: WordsScalarWhereInput[]
     NOT?: WordsScalarWhereInput | WordsScalarWhereInput[]
+    id?: IntFilter<"Words"> | number
     word?: StringFilter<"Words"> | string
-    createdAt?: DateTimeFilter<"Words"> | Date | string
+    addedAt?: DateTimeFilter<"Words"> | Date | string
     lastUpdate?: DateTimeFilter<"Words"> | Date | string
-    userId?: IntFilter<"Words"> | number
+    childId?: IntFilter<"Words"> | number
   }
 
-  export type UserCreateWithoutWordsInput = {
-    email: string
+  export type ChildCreateWithoutWordsInput = {
     name: string
+    dateOfBirth: Date | string
   }
 
-  export type UserUncheckedCreateWithoutWordsInput = {
+  export type ChildUncheckedCreateWithoutWordsInput = {
     id?: number
-    email: string
     name: string
+    dateOfBirth: Date | string
   }
 
-  export type UserCreateOrConnectWithoutWordsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutWordsInput, UserUncheckedCreateWithoutWordsInput>
+  export type ChildCreateOrConnectWithoutWordsInput = {
+    where: ChildWhereUniqueInput
+    create: XOR<ChildCreateWithoutWordsInput, ChildUncheckedCreateWithoutWordsInput>
   }
 
-  export type UserUpsertWithoutWordsInput = {
-    update: XOR<UserUpdateWithoutWordsInput, UserUncheckedUpdateWithoutWordsInput>
-    create: XOR<UserCreateWithoutWordsInput, UserUncheckedCreateWithoutWordsInput>
-    where?: UserWhereInput
+  export type ChildUpsertWithoutWordsInput = {
+    update: XOR<ChildUpdateWithoutWordsInput, ChildUncheckedUpdateWithoutWordsInput>
+    create: XOR<ChildCreateWithoutWordsInput, ChildUncheckedCreateWithoutWordsInput>
+    where?: ChildWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutWordsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutWordsInput, UserUncheckedUpdateWithoutWordsInput>
+  export type ChildUpdateToOneWithWhereWithoutWordsInput = {
+    where?: ChildWhereInput
+    data: XOR<ChildUpdateWithoutWordsInput, ChildUncheckedUpdateWithoutWordsInput>
   }
 
-  export type UserUpdateWithoutWordsInput = {
-    email?: StringFieldUpdateOperationsInput | string
+  export type ChildUpdateWithoutWordsInput = {
     name?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserUncheckedUpdateWithoutWordsInput = {
+  export type ChildUncheckedUpdateWithoutWordsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WordsCreateManyUserInput = {
+  export type WordsCreateManyChildInput = {
+    id?: number
     word: string
-    createdAt?: Date | string
+    addedAt?: Date | string
     lastUpdate?: Date | string
   }
 
-  export type WordsUpdateWithoutUserInput = {
+  export type WordsUpdateWithoutChildInput = {
     word?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WordsUncheckedUpdateWithoutUserInput = {
+  export type WordsUncheckedUpdateWithoutChildInput = {
+    id?: IntFieldUpdateOperationsInput | number
     word?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WordsUncheckedUpdateManyWithoutUserInput = {
+  export type WordsUncheckedUpdateManyWithoutChildInput = {
+    id?: IntFieldUpdateOperationsInput | number
     word?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

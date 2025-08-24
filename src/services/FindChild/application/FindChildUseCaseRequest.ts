@@ -3,21 +3,24 @@ import { BaseUseCaseRequest } from "../../bases/BaseUseCaseRequest";
 import { UseCaseError } from "../../bases/UseCaseError";
 import { ValidationResult } from "../../bases/ValidationResult";
 
-export class FindUserUseCaseRequest extends BaseUseCaseRequest {
-  private userId: number;
+export class FindChildUseCaseRequest extends BaseUseCaseRequest {
+  private childId: number;
 
-  private constructor(userId: number) {
+  private constructor(childId: number) {
     super();
-    this.userId = userId;
+    this.childId = childId;
   }
 
   validate(): ValidationResult {
     const validationResult = new ValidationResult();
     const result = z
       .object({
-        userId: z.number().int().positive("User ID must be a positive integer"),
+        childId: z
+          .number()
+          .int()
+          .positive("Child ID must be a positive integer"),
       })
-      .safeParse({ userId: this.userId });
+      .safeParse({ childId: this.childId });
     if (!result.success) {
       result.error.issues.forEach((error) => {
         validationResult.addError(
@@ -31,11 +34,11 @@ export class FindUserUseCaseRequest extends BaseUseCaseRequest {
     return validationResult;
   }
 
-  static create(userId: number): FindUserUseCaseRequest {
-    return new FindUserUseCaseRequest(userId);
+  static create(childId: number): FindChildUseCaseRequest {
+    return new FindChildUseCaseRequest(childId);
   }
 
-  getUserId(): number {
-    return this.userId;
+  getChildId(): number {
+    return this.childId;
   }
 }

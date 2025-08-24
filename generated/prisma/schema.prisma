@@ -14,19 +14,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String
-  Words Words[]
+model Child {
+  id          Int      @id @default(autoincrement())
+  name        String
+  dateOfBirth DateTime
+  words       Words[]
+
+  @@unique([name, dateOfBirth])
 }
 
 model Words {
+  id         Int      @id @default(autoincrement())
   word       String
-  createdAt  DateTime @default(now())
+  addedAt    DateTime @default(now())
   lastUpdate DateTime @updatedAt
-  userId     Int
-  user       User     @relation(fields: [userId], references: [id])
+  childId    Int
+  child      Child    @relation(fields: [childId], references: [id])
 
-  @@unique([userId, word])
+  @@unique([childId, word])
 }
