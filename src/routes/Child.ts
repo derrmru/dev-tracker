@@ -9,6 +9,8 @@ import { FindChildUseCaseRequest } from "../services/FindChild/application/FindC
 import { FindChildUseCase } from "../services/FindChild/application/FindChildUseCase";
 import { DeleteChildUseCaseRequest } from "../services/DeleteChild/application/DeleteChildUseCaseRequest";
 import { DeleteChildUseCase } from "../services/DeleteChild/application/DeleteChildUseCase";
+import { UpdateChildUseCaseRequest } from "../services/UpdateChild/application/UpdateChildUseCaseRequest";
+import { UpdateChildUseCase } from "../services/UpdateChild/application/UpdateChildUseCase";
 
 export const router = express.Router({ mergeParams: true });
 
@@ -61,6 +63,23 @@ router.delete("/:id", async (req, res, next) => {
     const deleteChildUseCase = new DeleteChildUseCase(childRepository);
     const child = await deleteChildUseCase.run(request);
     console.log("Child deleted:", child);
+    res.status(200).json(child);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/:id", async (req, res, next) => {
+  try {
+    const childRepository = new SqlChildRepository(prisma);
+    const request = new UpdateChildUseCaseRequest(
+      Number(req.params.id),
+      req.body.name,
+      new Date(req.body.dateOfBirth)
+    );
+    const updateChildUseCase = new UpdateChildUseCase(childRepository);
+    const child = await updateChildUseCase.run(request);
+    console.log("Child updated:", child);
     res.status(200).json(child);
   } catch (error) {
     next(error);

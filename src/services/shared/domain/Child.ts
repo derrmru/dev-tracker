@@ -37,4 +37,14 @@ export class Child {
   getWords(): Word[] {
     return this.words;
   }
+
+  setName(newName: string): Child {
+    this.name = newName;
+    return this;
+  }
+
+  setDateOfBirth(newDateOfBirth: Date): Child {
+    this.dateOfBirth = newDateOfBirth;
+    return this;
+  }
 }

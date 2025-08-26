@@ -4,4 +4,7 @@ export const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
   optionsSuccessStatus: 204, // For legacy browser support
+  preflightContinue: false,
+  // Allow secure HTTPS origins
+  secure: true,
 };

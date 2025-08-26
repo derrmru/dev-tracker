@@ -8,6 +8,7 @@ export function errorHandler(
   res: Response,
   _next: NextFunction
 ) {
+  console.error(err);
   if (err instanceof ValidationResult) {
     return res.status(422).json({
       message: "Validation failed",
