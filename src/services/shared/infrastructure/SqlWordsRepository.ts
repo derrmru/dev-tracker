@@ -120,4 +120,42 @@ export class SqlWordsRepository {
       throw error;
     }
   }
+
+  async deleteMany(
+    wordIds: number[]
+  ): Promise<{ deletedCount: number; deletedWordIds: number[] }> {
+    console.log("Deleting words with IDs:", wordIds);
+    try {
+      const result = await this.db.$transaction(
+        async (tx: Prisma.TransactionClient) => {
+          // First, get the words that exist to return their IDs
+          const existingWords = await tx.words.findMany({
+            where: {
+              id: { in: wordIds },
+            },
+            select: { id: true },
+          });
+
+          const existingWordIds = existingWords.map((word: any) => word.id);
+
+          // Delete the words
+          const deleteResult = await tx.words.deleteMany({
+            where: {
+              id: { in: wordIds },
+            },
+          });
+
+          return {
+            deletedCount: deleteResult.count,
+            deletedWordIds: existingWordIds,
+          };
+        }
+      );
+      console.log("Deleted words:", result);
+      return result;
+    } catch (error) {
+      console.error("Error deleting words:", error);
+      throw error;
+    }
+  }
 }

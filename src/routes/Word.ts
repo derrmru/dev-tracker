@@ -6,6 +6,8 @@ import { FindAllWordsByChildIdUseCase } from "../services/words/FindAllWordsBtCh
 import { FindAllWordsByChildIdUseCaseRequest } from "../services/words/FindAllWordsBtChilldId/FindAllWordsByChildIdUseCaseRequest";
 import { UpdateWordByChildIdUseCase } from "../services/words/UpdateWordByChildId/UpdateWordByChildIdUseCase";
 import { UpdateWordByChildIdUseCaseRequest } from "../services/words/UpdateWordByChildId/UpdateWordByChildIdUseCaseRequest";
+import { DeleteManyWordsUseCase } from "../services/words/DeleteManyWords/DeleteManyWordsUseCase";
+import { DeleteManyWordsUseCaseRequest } from "../services/words/DeleteManyWords/DeleteManyWordsUseCaseRequest";
 import { SqlWordsRepository } from "../services/shared/infrastructure/SqlWordsRepository";
 import { Word } from "../services/shared/domain/Word";
 
@@ -61,6 +63,21 @@ router.put("/:childId", async (req, res, next) => {
     const updatedWord = await updateWordByChildIdUseCase.run(request);
     console.log("Word updated successfully:", updatedWord);
     res.status(200).json(updatedWord);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/many", async (req, res, next) => {
+  try {
+    const wordRepository = new SqlWordsRepository(prisma);
+    const request = DeleteManyWordsUseCaseRequest.create({
+      wordIds: req.body.wordIds,
+    });
+    const deleteManyWordsUseCase = new DeleteManyWordsUseCase(wordRepository);
+    const result = await deleteManyWordsUseCase.run(request);
+    console.log("Words deleted successfully:", result);
+    res.status(200).json(result);
   } catch (error) {
     next(error);
   }
