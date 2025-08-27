@@ -15,14 +15,18 @@ export class SqlWordsRepository {
         }
       );
       console.log("Created words:", result);
-      return Word.create({ word: result.word, addedAt: result.addedAt });
+      return Word.create({
+        id: result.id,
+        word: result.word,
+        addedAt: result.addedAt,
+      });
     } catch (error) {
       console.error("Error creating words:", error);
       throw error;
     }
   }
 
-  async findByChildId(childId: number) {
+  async findByChildId(childId: number): Promise<Word[]> {
     console.log("Finding words for childId:", childId);
     try {
       const result = await this.db.$transaction(
@@ -33,9 +37,86 @@ export class SqlWordsRepository {
         }
       );
       console.log("Found words:", result);
-      return result;
+      return result.map((word: any) =>
+        Word.create({
+          id: word.id,
+          word: word.word,
+          addedAt: word.addedAt,
+        })
+      );
     } catch (error) {
       console.error("Error finding words:", error);
+      throw error;
+    }
+  }
+
+  async findAll(): Promise<Word[]> {
+    console.log("Finding all words");
+    try {
+      const result = await this.db.$transaction(
+        async (tx: Prisma.TransactionClient) => {
+          return await tx.words.findMany();
+        }
+      );
+      console.log("Found words:", result);
+      return result.map((word: any) =>
+        Word.create({
+          id: word.id,
+          word: word.word,
+          addedAt: word.addedAt,
+        })
+      );
+    } catch (error) {
+      console.error("Error finding all words:", error);
+      throw error;
+    }
+  }
+
+  async updateByChildId({
+    wordId,
+    word,
+    addedAt,
+    childId,
+  }: {
+    wordId: number;
+    word: string;
+    addedAt: Date;
+    childId: number;
+  }): Promise<Word> {
+    console.log("Updating word:", { wordId, word, addedAt, childId });
+    try {
+      const result = await this.db.$transaction(
+        async (tx: Prisma.TransactionClient) => {
+          // First verify the word belongs to the specified child
+          const existingWord = await tx.words.findFirst({
+            where: {
+              id: wordId,
+              childId: childId,
+            },
+          });
+
+          if (!existingWord) {
+            throw new Error(
+              `Word with ID ${wordId} not found for child ${childId}`
+            );
+          }
+
+          // Update the word
+          return await tx.words.update({
+            where: { id: wordId },
+            data: { word, addedAt },
+          });
+        }
+      );
+      console.log("Updated word:", result);
+      return Word.create({
+        id: result.id,
+        word: result.word,
+        addedAt: result.addedAt,
+        lastUpdate: result.lastUpdate,
+      });
+    } catch (error) {
+      console.error("Error updating word:", error);
       throw error;
     }
   }

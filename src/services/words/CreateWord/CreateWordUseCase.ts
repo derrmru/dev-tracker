@@ -14,8 +14,6 @@ export class CreateWordUseCase extends BaseUseCase<
   async execute(
     request: CreateWordUseCaseRequest
   ): Promise<CreateWordUseCaseResponse> {
-    request.validate();
-
     const savedWord = await this.wordRepository.create({
       word: request.getWord(),
       childId: request.getChildId(),

@@ -2,7 +2,12 @@ import express from "express";
 import { prisma } from "../middleware/prisma";
 import { CreateWordUseCase } from "../services/words/CreateWord/CreateWordUseCase";
 import { CreateWordUseCaseRequest } from "../services/words/CreateWord/CreateWordUseCaseRequest";
+import { FindAllWordsByChildIdUseCase } from "../services/words/FindAllWordsBtChilldId/FindAllWordsByChildIdUseCase";
+import { FindAllWordsByChildIdUseCaseRequest } from "../services/words/FindAllWordsBtChilldId/FindAllWordsByChildIdUseCaseRequest";
+import { UpdateWordByChildIdUseCase } from "../services/words/UpdateWordByChildId/UpdateWordByChildIdUseCase";
+import { UpdateWordByChildIdUseCaseRequest } from "../services/words/UpdateWordByChildId/UpdateWordByChildIdUseCaseRequest";
 import { SqlWordsRepository } from "../services/shared/infrastructure/SqlWordsRepository";
+import { Word } from "../services/shared/domain/Word";
 
 export const router = express.Router({ mergeParams: true });
 
@@ -17,6 +22,45 @@ router.post("/:childId", async (req, res, next) => {
     await createWordUseCase.run(request);
     console.log("Word created successfully");
     res.status(201).send("Word created successfully");
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/:childId/all", async (req, res, next) => {
+  try {
+    const wordRepository = new SqlWordsRepository(prisma);
+    const request = FindAllWordsByChildIdUseCaseRequest.create(
+      Number(req.params.childId)
+    );
+    const findAllWordsByChildIdUseCase = new FindAllWordsByChildIdUseCase(
+      wordRepository
+    );
+    const words = await findAllWordsByChildIdUseCase.run(request);
+    console.log("Words found:", words);
+    res.status(200).json(words);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/:childId", async (req, res, next) => {
+  try {
+    const wordRepository = new SqlWordsRepository(prisma);
+    const request = UpdateWordByChildIdUseCaseRequest.create({
+      wordId: Number(req.body.word.id),
+      word: Word.create({
+        ...req.body.word,
+        addedAt: new Date(req.body.word.addedAt),
+      }),
+      childId: Number(req.params.childId),
+    });
+    const updateWordByChildIdUseCase = new UpdateWordByChildIdUseCase(
+      wordRepository
+    );
+    const updatedWord = await updateWordByChildIdUseCase.run(request);
+    console.log("Word updated successfully:", updatedWord);
+    res.status(200).json(updatedWord);
   } catch (error) {
     next(error);
   }
