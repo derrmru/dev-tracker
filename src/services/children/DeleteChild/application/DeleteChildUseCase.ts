@@ -1,5 +1,5 @@
-import { BaseUseCase } from "../../bases/BaseUseCase";
-import { SqlChildRepository } from "../../shared/infrastructure/SqlChildRepository";
+import { BaseUseCase } from "../../../bases/BaseUseCase";
+import { SqlChildRepository } from "../../../shared/infrastructure/SqlChildRepository";
 import { DeleteChildUseCaseRequest } from "./DeleteChildUseCaseRequest";
 import { DeleteChildUseCaseResponse } from "./DeleteChildUseCaseResponse";
 

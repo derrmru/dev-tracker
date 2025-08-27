@@ -4,22 +4,19 @@ export class Child {
   constructor(
     private dateOfBirth: Date,
     private name: string,
-    private words: Word[],
     private id?: number
   ) {}
 
   static create({
     dateOfBirth,
     name,
-    words,
     id,
   }: {
     dateOfBirth: Date;
     name: string;
-    words: Word[];
     id?: number;
   }): Child {
-    return new Child(dateOfBirth, name, words, id);
+    return new Child(dateOfBirth, name, id);
   }
 
   getId(): number | undefined {
@@ -32,10 +29,6 @@ export class Child {
 
   getDateOfBirth(): Date {
     return this.dateOfBirth;
-  }
-
-  getWords(): Word[] {
-    return this.words;
   }
 
   setName(newName: string): Child {

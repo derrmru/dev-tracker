@@ -1,26 +1,32 @@
-import z from "zod";
+import { z } from "zod";
 import { BaseUseCaseRequest } from "../../bases/BaseUseCaseRequest";
 import { ValidationResult } from "../../bases/ValidationResult";
 import { UseCaseError } from "../../bases/UseCaseError";
 
-export class DeleteChildUseCaseRequest extends BaseUseCaseRequest {
+export class CreateWordUseCaseRequest extends BaseUseCaseRequest {
+  private readonly word: string;
   private readonly childId: number;
 
-  private constructor(childId: number) {
+  private constructor(word: string, childId: number) {
     super();
+    this.word = word;
     this.childId = childId;
+  }
+
+  static create({ word, childId }: { word: string; childId: number }) {
+    return new CreateWordUseCaseRequest(word, childId);
   }
 
   validate(): ValidationResult {
     const validationResult = new ValidationResult();
-    const result = z
-      .object({
-        childId: z
-          .number()
-          .int()
-          .positive("Child ID must be a positive integer"),
-      })
-      .safeParse({ childId: this.childId });
+    const validation = z.object({
+      word: z.string().min(1).max(100),
+      childId: z.number().int().min(1),
+    });
+    const result = validation.safeParse({
+      word: this.word,
+      childId: this.childId,
+    });
     if (!result.success) {
       result.error.issues.forEach((error) => {
         validationResult.addError(
@@ -34,8 +40,8 @@ export class DeleteChildUseCaseRequest extends BaseUseCaseRequest {
     return validationResult;
   }
 
-  static create(childId: number): DeleteChildUseCaseRequest {
-    return new DeleteChildUseCaseRequest(childId);
+  getWord(): string {
+    return this.word;
   }
 
   getChildId(): number {

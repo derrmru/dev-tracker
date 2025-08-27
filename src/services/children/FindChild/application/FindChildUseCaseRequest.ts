@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { BaseUseCaseRequest } from "../../bases/BaseUseCaseRequest";
-import { UseCaseError } from "../../bases/UseCaseError";
-import { ValidationResult } from "../../bases/ValidationResult";
+import { BaseUseCaseRequest } from "../../../bases/BaseUseCaseRequest";
+import { UseCaseError } from "../../../bases/UseCaseError";
+import { ValidationResult } from "../../../bases/ValidationResult";
 
 export class FindChildUseCaseRequest extends BaseUseCaseRequest {
   private childId: number;

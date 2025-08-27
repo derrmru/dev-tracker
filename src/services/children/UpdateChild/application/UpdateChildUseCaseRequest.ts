@@ -1,8 +1,8 @@
 import z from "zod";
-import { BaseUseCaseRequest } from "../../bases/BaseUseCaseRequest";
-import { ValidationResult } from "../../bases/ValidationResult";
-import { isDefined, Nullable } from "../../../common/utils";
-import { UseCaseError } from "../../bases/UseCaseError";
+import { BaseUseCaseRequest } from "../../../bases/BaseUseCaseRequest";
+import { ValidationResult } from "../../../bases/ValidationResult";
+import { isDefined, Nullable } from "../../../../common/utils";
+import { UseCaseError } from "../../../bases/UseCaseError";
 
 export class UpdateChildUseCaseRequest extends BaseUseCaseRequest {
   constructor(

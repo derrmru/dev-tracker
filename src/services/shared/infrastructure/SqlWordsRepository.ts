@@ -1,20 +1,21 @@
 import { Prisma } from "@prisma/client";
+import { Word } from "../domain/Word";
 
 export class SqlWordsRepository {
   constructor(private readonly db: any) {}
 
-  async createMany(words: { word: string; addedAt: Date; childId: number }[]) {
-    console.log("Creating words:", words);
+  async create(word: { word: string; childId: number }) {
+    console.log("Creating word:", word);
     try {
       const result = await this.db.$transaction(
         async (tx: Prisma.TransactionClient) => {
-          return await tx.word.createMany({
-            data: words,
+          return await tx.words.create({
+            data: word,
           });
         }
       );
       console.log("Created words:", result);
-      return result;
+      return Word.create({ word: result.word, addedAt: result.addedAt });
     } catch (error) {
       console.error("Error creating words:", error);
       throw error;
@@ -26,7 +27,7 @@ export class SqlWordsRepository {
     try {
       const result = await this.db.$transaction(
         async (tx: Prisma.TransactionClient) => {
-          return await tx.word.findMany({
+          return await tx.words.findMany({
             where: { childId },
           });
         }

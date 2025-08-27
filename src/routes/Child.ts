@@ -1,16 +1,16 @@
 import express from "express";
 import { prisma } from "../middleware/prisma";
-import { CreateChildUseCaseRequest } from "../services/CreateChild/application/CreateChildUseCaseRequest";
-import { CreateChildUseCase } from "../services/CreateChild/application/CreateChildUseCase";
+import { CreateChildUseCaseRequest } from "../services/children/CreateChild/application/CreateChildUseCaseRequest";
+import { CreateChildUseCase } from "../services/children/CreateChild/application/CreateChildUseCase";
 import { SqlChildRepository } from "../services/shared/infrastructure/SqlChildRepository";
-import { FindAllChildrenUseCaseRequest } from "../services/FindAllChildren/application/FindAllChildrenUseCaseRequest";
-import { FindAllChildrenUseCase } from "../services/FindAllChildren/application/FindAllChildrenUseCase";
-import { FindChildUseCaseRequest } from "../services/FindChild/application/FindChildUseCaseRequest";
-import { FindChildUseCase } from "../services/FindChild/application/FindChildUseCase";
-import { DeleteChildUseCaseRequest } from "../services/DeleteChild/application/DeleteChildUseCaseRequest";
-import { DeleteChildUseCase } from "../services/DeleteChild/application/DeleteChildUseCase";
-import { UpdateChildUseCaseRequest } from "../services/UpdateChild/application/UpdateChildUseCaseRequest";
-import { UpdateChildUseCase } from "../services/UpdateChild/application/UpdateChildUseCase";
+import { FindAllChildrenUseCaseRequest } from "../services/children/FindAllChildren/application/FindAllChildrenUseCaseRequest";
+import { FindAllChildrenUseCase } from "../services/children/FindAllChildren/application/FindAllChildrenUseCase";
+import { FindChildUseCaseRequest } from "../services/children/FindChild/application/FindChildUseCaseRequest";
+import { FindChildUseCase } from "../services/children/FindChild/application/FindChildUseCase";
+import { DeleteChildUseCaseRequest } from "../services/children/DeleteChild/application/DeleteChildUseCaseRequest";
+import { DeleteChildUseCase } from "../services/children/DeleteChild/application/DeleteChildUseCase";
+import { UpdateChildUseCaseRequest } from "../services/children/UpdateChild/application/UpdateChildUseCaseRequest";
+import { UpdateChildUseCase } from "../services/children/UpdateChild/application/UpdateChildUseCase";
 
 export const router = express.Router({ mergeParams: true });
 
@@ -19,8 +19,7 @@ router.post("/create", async (req, res, next) => {
     const childRepository = new SqlChildRepository(prisma);
     const request = new CreateChildUseCaseRequest(
       req.body.name,
-      new Date(req.body.dateOfBirth),
-      req.body.words ?? []
+      new Date(req.body.dateOfBirth)
     );
     const createChildUseCase = new CreateChildUseCase(childRepository);
     const child = await createChildUseCase.run(request);

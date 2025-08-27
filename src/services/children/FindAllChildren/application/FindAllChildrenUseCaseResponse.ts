@@ -1,4 +1,4 @@
-import { Child } from "../../shared/domain/Child";
+import { Child } from "../../../shared/domain/Child";
 
 export class FindAllChildrenUseCaseResponse {
   private children: Child[];

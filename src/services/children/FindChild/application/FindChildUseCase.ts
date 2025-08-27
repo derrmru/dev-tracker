@@ -1,5 +1,5 @@
-import { BaseUseCase } from "../../bases/BaseUseCase";
-import { SqlChildRepository } from "../../shared/infrastructure/SqlChildRepository";
+import { BaseUseCase } from "../../../bases/BaseUseCase";
+import { SqlChildRepository } from "../../../shared/infrastructure/SqlChildRepository";
 import { FindChildUseCaseRequest } from "./FindChildUseCaseRequest";
 import { FindChildUseCaseResponse } from "./FindChildUseCaseResponse";
 

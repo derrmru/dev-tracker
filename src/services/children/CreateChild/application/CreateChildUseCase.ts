@@ -1,6 +1,6 @@
-import { BaseUseCase } from "../../bases/BaseUseCase";
-import { Child } from "../../shared/domain/Child";
-import { SqlChildRepository } from "../../shared/infrastructure/SqlChildRepository";
+import { BaseUseCase } from "../../../bases/BaseUseCase";
+import { Child } from "../../../shared/domain/Child";
+import { SqlChildRepository } from "../../../shared/infrastructure/SqlChildRepository";
 import { CreateChildUseCaseRequest } from "./CreateChildUseCaseRequest";
 import { CreateChildUseCaseResponse } from "./CreateChildUseCaseResponse";
 
@@ -19,7 +19,6 @@ export class CreateChildUseCase extends BaseUseCase<
       Child.create({
         dateOfBirth: request.getDateOfBirth(),
         name: request.getName(),
-        words: request.getWords(),
       })
     );
     if (!newChild) {

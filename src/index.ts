@@ -1,6 +1,7 @@
 import express from "express";
 import { prismaMiddleware } from "./middleware/prisma";
 import { router as children } from "./routes/Child";
+import { router as words } from "./routes/Word";
 import { corsOptions } from "./middleware/cors";
 import { errorHandler } from "./middleware/errorHandler";
 import cors from "cors";
@@ -17,6 +18,7 @@ app.use(prismaMiddleware());
 app.use(cors(corsOptions));
 
 app.use("/children", children);
+app.use("/words", words);
 
 app.use((_req, res, _next) => {
   res.status(404).send("Sorry can't find that!");

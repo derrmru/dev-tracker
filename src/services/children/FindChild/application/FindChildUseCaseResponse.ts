@@ -1,5 +1,5 @@
-import { Nullable } from "../../../common/utils";
-import { Child } from "../../shared/domain/Child";
+import { Nullable } from "../../../../common/utils";
+import { Child } from "../../../shared/domain/Child";
 
 export class FindChildUseCaseResponse {
   private child: Nullable<Child>;
