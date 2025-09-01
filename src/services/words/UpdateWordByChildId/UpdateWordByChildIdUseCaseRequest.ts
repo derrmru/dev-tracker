@@ -8,24 +8,33 @@ export class UpdateWordByChildIdUseCaseRequest extends BaseUseCaseRequest {
   private readonly wordId: number;
   private readonly word: Word;
   private readonly childId: number;
+  private readonly userId: number;
 
-  private constructor(wordId: number, word: Word, childId: number) {
+  private constructor(
+    wordId: number,
+    word: Word,
+    childId: number,
+    userId: number
+  ) {
     super();
     this.wordId = wordId;
     this.word = word;
     this.childId = childId;
+    this.userId = userId;
   }
 
   static create({
     wordId,
     word,
     childId,
+    userId,
   }: {
     wordId: number;
     word: Word;
     childId: number;
+    userId: number;
   }) {
-    return new UpdateWordByChildIdUseCaseRequest(wordId, word, childId);
+    return new UpdateWordByChildIdUseCaseRequest(wordId, word, childId, userId);
   }
 
   validate(): ValidationResult {
@@ -44,11 +53,13 @@ export class UpdateWordByChildIdUseCaseRequest extends BaseUseCaseRequest {
         })
         .required(),
       childId: z.number().int().positive("Child ID must be a positive integer"),
+      userId: z.number().int().positive("User ID must be a positive integer"),
     });
     const result = validation.safeParse({
       wordId: this.wordId,
       word: this.word,
       childId: this.childId,
+      userId: this.userId,
     });
     if (!result.success) {
       result.error.issues.forEach((error) => {
@@ -73,5 +84,9 @@ export class UpdateWordByChildIdUseCaseRequest extends BaseUseCaseRequest {
 
   getChildId(): number {
     return this.childId;
+  }
+
+  getUserId(): number {
+    return this.userId;
   }
 }

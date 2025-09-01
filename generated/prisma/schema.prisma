@@ -14,11 +14,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id         Int     @id @default(autoincrement())
+  externalId String
+  children   Child[]
+
+  @@unique([externalId])
+}
+
 model Child {
   id          Int      @id @default(autoincrement())
   name        String
   dateOfBirth DateTime
   words       Words[]
+  userId      Int?
+  user        User?    @relation(fields: [userId], references: [id])
 
   @@unique([name, dateOfBirth])
 }

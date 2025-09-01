@@ -11,8 +11,12 @@ export class FindAllChildrenUseCase extends BaseUseCase<
     super();
   }
 
-  async execute(): Promise<FindAllChildrenUseCaseResponse> {
-    const children = await this.childRepository.findAll();
+  async execute(
+    request: FindAllChildrenUseCaseRequest
+  ): Promise<FindAllChildrenUseCaseResponse> {
+    const children = await this.childRepository.findAllByUserId(
+      request.getUserId()
+    );
     return FindAllChildrenUseCaseResponse.create(children);
   }
 }

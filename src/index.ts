@@ -6,6 +6,7 @@ import { corsOptions } from "./middleware/cors";
 import { errorHandler } from "./middleware/errorHandler";
 import cors from "cors";
 import helmet from "helmet";
+import { isAuthenticated } from "./middleware/auth";
 
 const app = express();
 const port = 3000;
@@ -16,6 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(prismaMiddleware());
 app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  Promise.resolve(isAuthenticated(req, res, next)).catch(next);
+});
 
 app.use("/children", children);
 app.use("/words", words);

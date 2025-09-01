@@ -13,7 +13,10 @@ export class FindChildUseCase extends BaseUseCase<
   async execute(
     request: FindChildUseCaseRequest
   ): Promise<FindChildUseCaseResponse> {
-    const child = await this.childRepository.findById(request.getChildId());
+    const child = await this.childRepository.findById(
+      request.getChildId(),
+      request.getUserId()
+    );
     return FindChildUseCaseResponse.create(child);
   }
 }

@@ -120,10 +120,16 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  externalId: 'externalId'
+};
+
 exports.Prisma.ChildScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  dateOfBirth: 'dateOfBirth'
+  dateOfBirth: 'dateOfBirth',
+  userId: 'userId'
 };
 
 exports.Prisma.WordsScalarFieldEnum = {
@@ -144,8 +150,14 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
+  User: 'User',
   Child: 'Child',
   Words: 'Words'
 };

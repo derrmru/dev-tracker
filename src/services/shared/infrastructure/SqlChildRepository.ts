@@ -5,12 +5,16 @@ import { Child } from "../domain/Child";
 export class SqlChildRepository {
   constructor(private readonly db: any) {}
 
-  async findAll(): Promise<Child[]> {
+  async findAllByUserId(userId: number): Promise<Child[]> {
     console.log("Finding all children");
     try {
       const result = await this.db.$transaction(
         async (tx: Prisma.TransactionClient) => {
-          return await tx.child.findMany();
+          return await tx.child.findMany({
+            where: {
+              userId,
+            },
+          });
         }
       );
       console.log("Found children:", result);
@@ -22,6 +26,7 @@ export class SqlChildRepository {
           id: child.id,
           dateOfBirth: child.dateOfBirth,
           name: child.name,
+          userId: child.userId,
         })
       );
       return children;
@@ -31,11 +36,11 @@ export class SqlChildRepository {
     }
   }
 
-  async findById(id: number): Promise<Nullable<Child>> {
+  async findById(id: number, userId: number): Promise<Nullable<Child>> {
     const childResult = await this.db.$transaction(
       async (tx: Prisma.TransactionClient) => {
         return await tx.child.findUnique({
-          where: { id },
+          where: { id, userId },
         });
       }
     );
@@ -46,6 +51,7 @@ export class SqlChildRepository {
       id: childResult.id,
       dateOfBirth: childResult.dateOfBirth,
       name: childResult.name,
+      userId: childResult.userId,
     });
   }
 
@@ -57,6 +63,7 @@ export class SqlChildRepository {
           data: {
             dateOfBirth: newChild.getDateOfBirth(),
             name: newChild.getName(),
+            userId: newChild.getUserId(),
           },
         });
       }
@@ -66,14 +73,15 @@ export class SqlChildRepository {
       dateOfBirth: result.dateOfBirth,
       name: result.name,
       id: result.id,
+      userId: result.userId,
     });
   }
 
-  async delete(id: number): Promise<boolean> {
+  async delete(id: number, userId: number): Promise<boolean> {
     console.log("Deleting child with id:", id);
     await this.db.$transaction(async (tx: Prisma.TransactionClient) => {
       const existingChild = await tx.child.findUnique({
-        where: { id },
+        where: { id, userId },
       });
 
       if (!existingChild) {
@@ -109,6 +117,7 @@ export class SqlChildRepository {
       dateOfBirth: result.dateOfBirth,
       name: result.name,
       id: result.id,
+      userId: result.userId,
     });
   }
 }

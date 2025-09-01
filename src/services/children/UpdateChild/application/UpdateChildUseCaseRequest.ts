@@ -8,7 +8,8 @@ export class UpdateChildUseCaseRequest extends BaseUseCaseRequest {
   constructor(
     private readonly childId: number,
     private readonly name: Nullable<string>,
-    private readonly dateOfBirth: Nullable<Date>
+    private readonly dateOfBirth: Nullable<Date>,
+    private readonly userId: number
   ) {
     super();
   }
@@ -19,6 +20,7 @@ export class UpdateChildUseCaseRequest extends BaseUseCaseRequest {
       childId: z.number().min(1),
       name: z.string().min(3).max(100).optional(),
       dateOfBirth: z.date().optional(),
+      userId: z.number().min(1),
     };
     if (!this.name && !this.dateOfBirth) {
       validationResult.addError(
@@ -33,6 +35,7 @@ export class UpdateChildUseCaseRequest extends BaseUseCaseRequest {
       childId: this.childId,
       name: this.name,
       dateOfBirth: this.dateOfBirth,
+      userId: this.userId,
     });
     if (!result.success) {
       result.error.issues.forEach((error) => {
@@ -57,5 +60,9 @@ export class UpdateChildUseCaseRequest extends BaseUseCaseRequest {
 
   getDateOfBirth(): Nullable<Date> {
     return this.dateOfBirth;
+  }
+
+  getUserId(): number {
+    return this.userId;
   }
 }

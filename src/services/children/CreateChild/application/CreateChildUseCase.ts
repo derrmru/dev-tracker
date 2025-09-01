@@ -19,6 +19,7 @@ export class CreateChildUseCase extends BaseUseCase<
       Child.create({
         dateOfBirth: request.getDateOfBirth(),
         name: request.getName(),
+        userId: request.getUserId(),
       })
     );
     if (!newChild) {

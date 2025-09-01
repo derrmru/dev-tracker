@@ -15,7 +15,10 @@ export class UpdateChildUseCase extends BaseUseCase<
     request: UpdateChildUseCaseRequest
   ): Promise<UpdateChildUseCaseResponse> {
     console.log("Request to update child:", request);
-    const child = await this.childRepository.findById(request.getChildId());
+    const child = await this.childRepository.findById(
+      request.getChildId(),
+      request.getUserId()
+    );
     console.log("Existing Child Data:", child);
     if (!child) {
       throw new Error("Child not found");

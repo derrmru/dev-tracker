@@ -19,6 +19,7 @@ export class SqlWordsRepository {
         id: result.id,
         word: result.word,
         addedAt: result.addedAt,
+        childId: result.childId,
       });
     } catch (error) {
       console.error("Error creating words:", error);
@@ -42,6 +43,7 @@ export class SqlWordsRepository {
           id: word.id,
           word: word.word,
           addedAt: word.addedAt,
+          childId: word.childId,
         })
       );
     } catch (error) {
@@ -64,6 +66,7 @@ export class SqlWordsRepository {
           id: word.id,
           word: word.word,
           addedAt: word.addedAt,
+          childId: word.childId,
         })
       );
     } catch (error) {
@@ -113,6 +116,7 @@ export class SqlWordsRepository {
         id: result.id,
         word: result.word,
         addedAt: result.addedAt,
+        childId: result.childId,
         lastUpdate: result.lastUpdate,
       });
     } catch (error) {
@@ -155,6 +159,44 @@ export class SqlWordsRepository {
       return result;
     } catch (error) {
       console.error("Error deleting words:", error);
+      throw error;
+    }
+  }
+
+  async findManyByUserId(userId: number) {
+    console.log("Finding words for userId:", userId);
+    try {
+      const childIdsForUser = await this.db.$transaction(
+        async (tx: Prisma.TransactionClient) => {
+          return await tx.children.findMany({
+            where: { userId },
+            select: { id: true },
+          });
+        }
+      );
+
+      const words = await this.db.$transaction(
+        async (tx: Prisma.TransactionClient) => {
+          return await tx.words.findMany({
+            where: {
+              childId: {
+                in: childIdsForUser.map((child: { id: number }) => child.id),
+              },
+            },
+          });
+        }
+      );
+      console.log("Found words:", words);
+      return words.map((word: any) =>
+        Word.create({
+          id: word.id,
+          word: word.word,
+          addedAt: word.addedAt,
+          childId: word.childId,
+        })
+      );
+    } catch (error) {
+      console.error("Error finding words:", error);
       throw error;
     }
   }

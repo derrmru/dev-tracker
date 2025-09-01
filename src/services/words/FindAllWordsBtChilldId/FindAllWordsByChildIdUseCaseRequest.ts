@@ -4,13 +4,20 @@ import { ValidationResult } from "../../bases/ValidationResult";
 import { UseCaseError } from "../../bases/UseCaseError";
 
 export class FindAllWordsByChildIdUseCaseRequest extends BaseUseCaseRequest {
-  constructor(private readonly childId: number) {
+  constructor(
+    private readonly childId: number,
+    private readonly userId: number
+  ) {
     super();
     this.childId = childId;
+    this.userId = userId;
   }
 
-  static create(childId: number): FindAllWordsByChildIdUseCaseRequest {
-    return new FindAllWordsByChildIdUseCaseRequest(childId);
+  static create(
+    childId: number,
+    userId: number
+  ): FindAllWordsByChildIdUseCaseRequest {
+    return new FindAllWordsByChildIdUseCaseRequest(childId, userId);
   }
 
   validate(): ValidationResult {
@@ -21,9 +28,11 @@ export class FindAllWordsByChildIdUseCaseRequest extends BaseUseCaseRequest {
           .number()
           .int()
           .positive("Child ID must be a positive integer"),
+        userId: z.number().int().positive("User ID must be a positive integer"),
       })
       .safeParse({
         childId: this.childId,
+        userId: this.userId,
       });
 
     console.log("Validation result:", result);
@@ -42,5 +51,9 @@ export class FindAllWordsByChildIdUseCaseRequest extends BaseUseCaseRequest {
 
   getChildId(): number {
     return this.childId;
+  }
+
+  getUserId(): number {
+    return this.userId;
   }
 }

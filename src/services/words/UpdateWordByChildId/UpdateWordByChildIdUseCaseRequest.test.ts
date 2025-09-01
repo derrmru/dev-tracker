@@ -7,16 +7,19 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: "testword",
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 1,
       word: word,
       childId: 123,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(request.getWordId()).toBe(1);
     expect(request.getWord().getWord()).toBe("testword");
     expect(request.getChildId()).toBe(123);
+    expect(request.getUserId()).toBe(1);
     expect(validationResult.isValid()).toBe(true);
   });
 
@@ -25,11 +28,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: "testword",
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: -1,
       word: word,
       childId: 123,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(false);
@@ -41,11 +46,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: "testword",
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 0,
       word: word,
       childId: 123,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(false);
@@ -57,11 +64,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: "",
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 1,
       word: word,
       childId: 123,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(false);
@@ -74,11 +83,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: longWordText,
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 1,
       word: word,
       childId: 123,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(false);
@@ -91,11 +102,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: maxLengthWordText,
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 1,
       word: word,
       childId: 123,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(true);
@@ -106,11 +119,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: "testword",
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 1,
       word: word,
       childId: -1,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(false);
@@ -122,11 +137,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: "testword",
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 1,
       word: word,
       childId: 0,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(false);
@@ -138,11 +155,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: "testword",
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 1.5,
       word: word,
       childId: 123,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(false);
@@ -154,11 +173,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: "testword",
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 1,
       word: word,
       childId: 123.5,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(false);
@@ -170,11 +191,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: 1,
       word: "a",
       addedAt: new Date("2023-01-01"),
+      childId: 1,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 1,
       word: word,
       childId: 1,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(true);
@@ -185,11 +208,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: -1,
       word: "testword",
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: 1,
       word: word,
       childId: 123,
+      userId: 1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(false);
@@ -201,11 +226,13 @@ describe("UpdateWordByChildIdUseCaseRequest", () => {
       id: -1,
       word: "",
       addedAt: new Date("2023-01-01"),
+      childId: 123,
     });
     const request = UpdateWordByChildIdUseCaseRequest.create({
       wordId: -1,
       word: word,
       childId: -5,
+      userId: -1,
     });
     const validationResult = request.validate();
     expect(validationResult.isValid()).toBe(false);

@@ -16,7 +16,7 @@ export class DeleteChildUseCase extends BaseUseCase<
   ): Promise<DeleteChildUseCaseResponse> {
     const childId = request.getChildId();
 
-    await this.childRepository.delete(childId);
+    await this.childRepository.delete(childId, request.getUserId());
 
     return new DeleteChildUseCaseResponse(true);
   }

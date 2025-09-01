@@ -1,4 +1,5 @@
 import { BaseUseCase } from "../../bases/BaseUseCase";
+import { SqlChildRepository } from "../../shared/infrastructure/SqlChildRepository";
 import { SqlWordsRepository } from "../../shared/infrastructure/SqlWordsRepository";
 import { UpdateWordByChildIdUseCaseRequest } from "./UpdateWordByChildIdUseCaseRequest";
 import { UpdateWordByChildIdUseCaseResponse } from "./UpdateWordByChildIdUseCaseResponse";
@@ -7,14 +8,24 @@ export class UpdateWordByChildIdUseCase extends BaseUseCase<
   UpdateWordByChildIdUseCaseRequest,
   UpdateWordByChildIdUseCaseResponse
 > {
-  constructor(private wordRepository: SqlWordsRepository) {
+  constructor(
+    private wordRepository: SqlWordsRepository,
+    private childRepository: SqlChildRepository
+  ) {
     super();
   }
 
   async execute(
     request: UpdateWordByChildIdUseCaseRequest
   ): Promise<UpdateWordByChildIdUseCaseResponse> {
-    request.validate();
+    const doesChildExistOnCurrentUser = this.childRepository.findById(
+      request.getChildId(),
+      request.getUserId()
+    );
+
+    if (!doesChildExistOnCurrentUser) {
+      throw new Error("Child does not belong to the current user");
+    }
 
     const updatedWord = await this.wordRepository.updateByChildId({
       wordId: request.getWordId(),
