@@ -7,11 +7,18 @@ export class CreateWordUseCaseRequest extends BaseUseCaseRequest {
   private readonly word: string;
   private readonly childId: number;
   private readonly userId: number;
+  private readonly addedAt: Date;
 
-  private constructor(word: string, childId: number, userId: number) {
+  private constructor(
+    word: string,
+    childId: number,
+    userId: number,
+    addedAt: Date
+  ) {
     super();
     this.word = word;
     this.childId = childId;
+    this.addedAt = addedAt;
     this.userId = userId;
   }
 
@@ -19,12 +26,14 @@ export class CreateWordUseCaseRequest extends BaseUseCaseRequest {
     word,
     childId,
     userId,
+    addedAt,
   }: {
     word: string;
     childId: number;
     userId: number;
+    addedAt: Date;
   }) {
-    return new CreateWordUseCaseRequest(word, childId, userId);
+    return new CreateWordUseCaseRequest(word, childId, userId, addedAt);
   }
 
   validate(): ValidationResult {
@@ -33,11 +42,13 @@ export class CreateWordUseCaseRequest extends BaseUseCaseRequest {
       word: z.string().min(1).max(100),
       childId: z.number().int().min(1),
       userId: z.number().int().min(1),
+      addedAt: z.date(),
     });
     const result = validation.safeParse({
       word: this.word,
       childId: this.childId,
       userId: this.userId,
+      addedAt: this.addedAt,
     });
     if (!result.success) {
       result.error.issues.forEach((error) => {
@@ -62,5 +73,9 @@ export class CreateWordUseCaseRequest extends BaseUseCaseRequest {
 
   getUserId(): number {
     return this.userId;
+  }
+
+  getAddedAt(): Date {
+    return this.addedAt;
   }
 }

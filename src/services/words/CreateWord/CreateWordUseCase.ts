@@ -30,6 +30,7 @@ export class CreateWordUseCase extends BaseUseCase<
     const savedWord = await this.wordRepository.create({
       word: request.getWord(),
       childId: request.getChildId(),
+      addedAt: request.getAddedAt(),
     });
 
     console.log(`Word "${savedWord}" has been created.`);

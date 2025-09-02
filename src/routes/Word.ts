@@ -23,6 +23,7 @@ router.post("/:childId", async (req, res, next) => {
       word: req.body.word,
       childId: Number(req.params.childId),
       userId: Number(req.context?.user.getId()),
+      addedAt: new Date(req.body.addedAt),
     });
     const createWordUseCase = new CreateWordUseCase(
       wordRepository,

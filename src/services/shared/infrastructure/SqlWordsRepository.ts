@@ -4,7 +4,7 @@ import { Word } from "../domain/Word";
 export class SqlWordsRepository {
   constructor(private readonly db: any) {}
 
-  async create(word: { word: string; childId: number }) {
+  async create(word: { word: string; childId: number; addedAt: Date }) {
     console.log("Creating word:", word);
     try {
       const result = await this.db.$transaction(
@@ -168,7 +168,7 @@ export class SqlWordsRepository {
     try {
       const childIdsForUser = await this.db.$transaction(
         async (tx: Prisma.TransactionClient) => {
-          return await tx.children.findMany({
+          return await tx.child.findMany({
             where: { userId },
             select: { id: true },
           });
