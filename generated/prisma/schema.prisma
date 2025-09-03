@@ -29,6 +29,7 @@ model Child {
   words       Words[]
   userId      Int?
   user        User?    @relation(fields: [userId], references: [id])
+  Height      Height[]
 
   @@unique([name, dateOfBirth])
 }
@@ -42,4 +43,16 @@ model Words {
   child      Child    @relation(fields: [childId], references: [id])
 
   @@unique([childId, word])
+}
+
+model Height {
+  id         Int      @id @default(autoincrement())
+  height     Int
+  unit       String
+  addedAt    DateTime @default(now())
+  lastUpdate DateTime @updatedAt
+  childId    Int
+  child      Child    @relation(fields: [childId], references: [id])
+
+  @@unique([childId, height])
 }

@@ -28,6 +28,11 @@ export type Child = $Result.DefaultSelection<Prisma.$ChildPayload>
  * 
  */
 export type Words = $Result.DefaultSelection<Prisma.$WordsPayload>
+/**
+ * Model Height
+ * 
+ */
+export type Height = $Result.DefaultSelection<Prisma.$HeightPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +188,16 @@ export class PrismaClient<
     * ```
     */
   get words(): Prisma.WordsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.height`: Exposes CRUD operations for the **Height** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Heights
+    * const heights = await prisma.height.findMany()
+    * ```
+    */
+  get height(): Prisma.HeightDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +640,8 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Child: 'Child',
-    Words: 'Words'
+    Words: 'Words',
+    Height: 'Height'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "child" | "words"
+      modelProps: "user" | "child" | "words" | "height"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +886,80 @@ export namespace Prisma {
           }
         }
       }
+      Height: {
+        payload: Prisma.$HeightPayload<ExtArgs>
+        fields: Prisma.HeightFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HeightFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HeightFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload>
+          }
+          findFirst: {
+            args: Prisma.HeightFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HeightFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload>
+          }
+          findMany: {
+            args: Prisma.HeightFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload>[]
+          }
+          create: {
+            args: Prisma.HeightCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload>
+          }
+          createMany: {
+            args: Prisma.HeightCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HeightCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload>[]
+          }
+          delete: {
+            args: Prisma.HeightDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload>
+          }
+          update: {
+            args: Prisma.HeightUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload>
+          }
+          deleteMany: {
+            args: Prisma.HeightDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HeightUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HeightUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload>[]
+          }
+          upsert: {
+            args: Prisma.HeightUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeightPayload>
+          }
+          aggregate: {
+            args: Prisma.HeightAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHeight>
+          }
+          groupBy: {
+            args: Prisma.HeightGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HeightGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HeightCountArgs<ExtArgs>
+            result: $Utils.Optional<HeightCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1047,7 @@ export namespace Prisma {
     user?: UserOmit
     child?: ChildOmit
     words?: WordsOmit
+    height?: HeightOmit
   }
 
   /* Types for Logging */
@@ -1083,10 +1174,12 @@ export namespace Prisma {
 
   export type ChildCountOutputType = {
     words: number
+    Height: number
   }
 
   export type ChildCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     words?: boolean | ChildCountOutputTypeCountWordsArgs
+    Height?: boolean | ChildCountOutputTypeCountHeightArgs
   }
 
   // Custom InputTypes
@@ -1105,6 +1198,13 @@ export namespace Prisma {
    */
   export type ChildCountOutputTypeCountWordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WordsWhereInput
+  }
+
+  /**
+   * ChildCountOutputType without action
+   */
+  export type ChildCountOutputTypeCountHeightArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HeightWhereInput
   }
 
 
@@ -2373,6 +2473,7 @@ export namespace Prisma {
     userId?: boolean
     words?: boolean | Child$wordsArgs<ExtArgs>
     user?: boolean | Child$userArgs<ExtArgs>
+    Height?: boolean | Child$HeightArgs<ExtArgs>
     _count?: boolean | ChildCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["child"]>
 
@@ -2403,6 +2504,7 @@ export namespace Prisma {
   export type ChildInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     words?: boolean | Child$wordsArgs<ExtArgs>
     user?: boolean | Child$userArgs<ExtArgs>
+    Height?: boolean | Child$HeightArgs<ExtArgs>
     _count?: boolean | ChildCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ChildIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2417,6 +2519,7 @@ export namespace Prisma {
     objects: {
       words: Prisma.$WordsPayload<ExtArgs>[]
       user: Prisma.$UserPayload<ExtArgs> | null
+      Height: Prisma.$HeightPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2819,6 +2922,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     words<T extends Child$wordsArgs<ExtArgs> = {}>(args?: Subset<T, Child$wordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WordsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user<T extends Child$userArgs<ExtArgs> = {}>(args?: Subset<T, Child$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    Height<T extends Child$HeightArgs<ExtArgs> = {}>(args?: Subset<T, Child$HeightArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3288,6 +3392,30 @@ export namespace Prisma {
      */
     include?: UserInclude<ExtArgs> | null
     where?: UserWhereInput
+  }
+
+  /**
+   * Child.Height
+   */
+  export type Child$HeightArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+    where?: HeightWhereInput
+    orderBy?: HeightOrderByWithRelationInput | HeightOrderByWithRelationInput[]
+    cursor?: HeightWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HeightScalarFieldEnum | HeightScalarFieldEnum[]
   }
 
   /**
@@ -4406,6 +4534,1119 @@ export namespace Prisma {
 
 
   /**
+   * Model Height
+   */
+
+  export type AggregateHeight = {
+    _count: HeightCountAggregateOutputType | null
+    _avg: HeightAvgAggregateOutputType | null
+    _sum: HeightSumAggregateOutputType | null
+    _min: HeightMinAggregateOutputType | null
+    _max: HeightMaxAggregateOutputType | null
+  }
+
+  export type HeightAvgAggregateOutputType = {
+    id: number | null
+    height: number | null
+    childId: number | null
+  }
+
+  export type HeightSumAggregateOutputType = {
+    id: number | null
+    height: number | null
+    childId: number | null
+  }
+
+  export type HeightMinAggregateOutputType = {
+    id: number | null
+    height: number | null
+    unit: string | null
+    addedAt: Date | null
+    lastUpdate: Date | null
+    childId: number | null
+  }
+
+  export type HeightMaxAggregateOutputType = {
+    id: number | null
+    height: number | null
+    unit: string | null
+    addedAt: Date | null
+    lastUpdate: Date | null
+    childId: number | null
+  }
+
+  export type HeightCountAggregateOutputType = {
+    id: number
+    height: number
+    unit: number
+    addedAt: number
+    lastUpdate: number
+    childId: number
+    _all: number
+  }
+
+
+  export type HeightAvgAggregateInputType = {
+    id?: true
+    height?: true
+    childId?: true
+  }
+
+  export type HeightSumAggregateInputType = {
+    id?: true
+    height?: true
+    childId?: true
+  }
+
+  export type HeightMinAggregateInputType = {
+    id?: true
+    height?: true
+    unit?: true
+    addedAt?: true
+    lastUpdate?: true
+    childId?: true
+  }
+
+  export type HeightMaxAggregateInputType = {
+    id?: true
+    height?: true
+    unit?: true
+    addedAt?: true
+    lastUpdate?: true
+    childId?: true
+  }
+
+  export type HeightCountAggregateInputType = {
+    id?: true
+    height?: true
+    unit?: true
+    addedAt?: true
+    lastUpdate?: true
+    childId?: true
+    _all?: true
+  }
+
+  export type HeightAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Height to aggregate.
+     */
+    where?: HeightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Heights to fetch.
+     */
+    orderBy?: HeightOrderByWithRelationInput | HeightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HeightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Heights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Heights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Heights
+    **/
+    _count?: true | HeightCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HeightAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HeightSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HeightMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HeightMaxAggregateInputType
+  }
+
+  export type GetHeightAggregateType<T extends HeightAggregateArgs> = {
+        [P in keyof T & keyof AggregateHeight]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHeight[P]>
+      : GetScalarType<T[P], AggregateHeight[P]>
+  }
+
+
+
+
+  export type HeightGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HeightWhereInput
+    orderBy?: HeightOrderByWithAggregationInput | HeightOrderByWithAggregationInput[]
+    by: HeightScalarFieldEnum[] | HeightScalarFieldEnum
+    having?: HeightScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HeightCountAggregateInputType | true
+    _avg?: HeightAvgAggregateInputType
+    _sum?: HeightSumAggregateInputType
+    _min?: HeightMinAggregateInputType
+    _max?: HeightMaxAggregateInputType
+  }
+
+  export type HeightGroupByOutputType = {
+    id: number
+    height: number
+    unit: string
+    addedAt: Date
+    lastUpdate: Date
+    childId: number
+    _count: HeightCountAggregateOutputType | null
+    _avg: HeightAvgAggregateOutputType | null
+    _sum: HeightSumAggregateOutputType | null
+    _min: HeightMinAggregateOutputType | null
+    _max: HeightMaxAggregateOutputType | null
+  }
+
+  type GetHeightGroupByPayload<T extends HeightGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HeightGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HeightGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HeightGroupByOutputType[P]>
+            : GetScalarType<T[P], HeightGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HeightSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    height?: boolean
+    unit?: boolean
+    addedAt?: boolean
+    lastUpdate?: boolean
+    childId?: boolean
+    child?: boolean | ChildDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["height"]>
+
+  export type HeightSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    height?: boolean
+    unit?: boolean
+    addedAt?: boolean
+    lastUpdate?: boolean
+    childId?: boolean
+    child?: boolean | ChildDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["height"]>
+
+  export type HeightSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    height?: boolean
+    unit?: boolean
+    addedAt?: boolean
+    lastUpdate?: boolean
+    childId?: boolean
+    child?: boolean | ChildDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["height"]>
+
+  export type HeightSelectScalar = {
+    id?: boolean
+    height?: boolean
+    unit?: boolean
+    addedAt?: boolean
+    lastUpdate?: boolean
+    childId?: boolean
+  }
+
+  export type HeightOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "height" | "unit" | "addedAt" | "lastUpdate" | "childId", ExtArgs["result"]["height"]>
+  export type HeightInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    child?: boolean | ChildDefaultArgs<ExtArgs>
+  }
+  export type HeightIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    child?: boolean | ChildDefaultArgs<ExtArgs>
+  }
+  export type HeightIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    child?: boolean | ChildDefaultArgs<ExtArgs>
+  }
+
+  export type $HeightPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Height"
+    objects: {
+      child: Prisma.$ChildPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      height: number
+      unit: string
+      addedAt: Date
+      lastUpdate: Date
+      childId: number
+    }, ExtArgs["result"]["height"]>
+    composites: {}
+  }
+
+  type HeightGetPayload<S extends boolean | null | undefined | HeightDefaultArgs> = $Result.GetResult<Prisma.$HeightPayload, S>
+
+  type HeightCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HeightFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HeightCountAggregateInputType | true
+    }
+
+  export interface HeightDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Height'], meta: { name: 'Height' } }
+    /**
+     * Find zero or one Height that matches the filter.
+     * @param {HeightFindUniqueArgs} args - Arguments to find a Height
+     * @example
+     * // Get one Height
+     * const height = await prisma.height.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HeightFindUniqueArgs>(args: SelectSubset<T, HeightFindUniqueArgs<ExtArgs>>): Prisma__HeightClient<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Height that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HeightFindUniqueOrThrowArgs} args - Arguments to find a Height
+     * @example
+     * // Get one Height
+     * const height = await prisma.height.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HeightFindUniqueOrThrowArgs>(args: SelectSubset<T, HeightFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HeightClient<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Height that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeightFindFirstArgs} args - Arguments to find a Height
+     * @example
+     * // Get one Height
+     * const height = await prisma.height.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HeightFindFirstArgs>(args?: SelectSubset<T, HeightFindFirstArgs<ExtArgs>>): Prisma__HeightClient<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Height that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeightFindFirstOrThrowArgs} args - Arguments to find a Height
+     * @example
+     * // Get one Height
+     * const height = await prisma.height.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HeightFindFirstOrThrowArgs>(args?: SelectSubset<T, HeightFindFirstOrThrowArgs<ExtArgs>>): Prisma__HeightClient<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Heights that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeightFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Heights
+     * const heights = await prisma.height.findMany()
+     * 
+     * // Get first 10 Heights
+     * const heights = await prisma.height.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const heightWithIdOnly = await prisma.height.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HeightFindManyArgs>(args?: SelectSubset<T, HeightFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Height.
+     * @param {HeightCreateArgs} args - Arguments to create a Height.
+     * @example
+     * // Create one Height
+     * const Height = await prisma.height.create({
+     *   data: {
+     *     // ... data to create a Height
+     *   }
+     * })
+     * 
+     */
+    create<T extends HeightCreateArgs>(args: SelectSubset<T, HeightCreateArgs<ExtArgs>>): Prisma__HeightClient<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Heights.
+     * @param {HeightCreateManyArgs} args - Arguments to create many Heights.
+     * @example
+     * // Create many Heights
+     * const height = await prisma.height.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HeightCreateManyArgs>(args?: SelectSubset<T, HeightCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Heights and returns the data saved in the database.
+     * @param {HeightCreateManyAndReturnArgs} args - Arguments to create many Heights.
+     * @example
+     * // Create many Heights
+     * const height = await prisma.height.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Heights and only return the `id`
+     * const heightWithIdOnly = await prisma.height.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HeightCreateManyAndReturnArgs>(args?: SelectSubset<T, HeightCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Height.
+     * @param {HeightDeleteArgs} args - Arguments to delete one Height.
+     * @example
+     * // Delete one Height
+     * const Height = await prisma.height.delete({
+     *   where: {
+     *     // ... filter to delete one Height
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HeightDeleteArgs>(args: SelectSubset<T, HeightDeleteArgs<ExtArgs>>): Prisma__HeightClient<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Height.
+     * @param {HeightUpdateArgs} args - Arguments to update one Height.
+     * @example
+     * // Update one Height
+     * const height = await prisma.height.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HeightUpdateArgs>(args: SelectSubset<T, HeightUpdateArgs<ExtArgs>>): Prisma__HeightClient<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Heights.
+     * @param {HeightDeleteManyArgs} args - Arguments to filter Heights to delete.
+     * @example
+     * // Delete a few Heights
+     * const { count } = await prisma.height.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HeightDeleteManyArgs>(args?: SelectSubset<T, HeightDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Heights.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeightUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Heights
+     * const height = await prisma.height.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HeightUpdateManyArgs>(args: SelectSubset<T, HeightUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Heights and returns the data updated in the database.
+     * @param {HeightUpdateManyAndReturnArgs} args - Arguments to update many Heights.
+     * @example
+     * // Update many Heights
+     * const height = await prisma.height.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Heights and only return the `id`
+     * const heightWithIdOnly = await prisma.height.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HeightUpdateManyAndReturnArgs>(args: SelectSubset<T, HeightUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Height.
+     * @param {HeightUpsertArgs} args - Arguments to update or create a Height.
+     * @example
+     * // Update or create a Height
+     * const height = await prisma.height.upsert({
+     *   create: {
+     *     // ... data to create a Height
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Height we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HeightUpsertArgs>(args: SelectSubset<T, HeightUpsertArgs<ExtArgs>>): Prisma__HeightClient<$Result.GetResult<Prisma.$HeightPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Heights.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeightCountArgs} args - Arguments to filter Heights to count.
+     * @example
+     * // Count the number of Heights
+     * const count = await prisma.height.count({
+     *   where: {
+     *     // ... the filter for the Heights we want to count
+     *   }
+     * })
+    **/
+    count<T extends HeightCountArgs>(
+      args?: Subset<T, HeightCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HeightCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Height.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeightAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HeightAggregateArgs>(args: Subset<T, HeightAggregateArgs>): Prisma.PrismaPromise<GetHeightAggregateType<T>>
+
+    /**
+     * Group by Height.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeightGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HeightGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HeightGroupByArgs['orderBy'] }
+        : { orderBy?: HeightGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HeightGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHeightGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Height model
+   */
+  readonly fields: HeightFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Height.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HeightClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    child<T extends ChildDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChildDefaultArgs<ExtArgs>>): Prisma__ChildClient<$Result.GetResult<Prisma.$ChildPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Height model
+   */
+  interface HeightFieldRefs {
+    readonly id: FieldRef<"Height", 'Int'>
+    readonly height: FieldRef<"Height", 'Int'>
+    readonly unit: FieldRef<"Height", 'String'>
+    readonly addedAt: FieldRef<"Height", 'DateTime'>
+    readonly lastUpdate: FieldRef<"Height", 'DateTime'>
+    readonly childId: FieldRef<"Height", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Height findUnique
+   */
+  export type HeightFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+    /**
+     * Filter, which Height to fetch.
+     */
+    where: HeightWhereUniqueInput
+  }
+
+  /**
+   * Height findUniqueOrThrow
+   */
+  export type HeightFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+    /**
+     * Filter, which Height to fetch.
+     */
+    where: HeightWhereUniqueInput
+  }
+
+  /**
+   * Height findFirst
+   */
+  export type HeightFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+    /**
+     * Filter, which Height to fetch.
+     */
+    where?: HeightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Heights to fetch.
+     */
+    orderBy?: HeightOrderByWithRelationInput | HeightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Heights.
+     */
+    cursor?: HeightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Heights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Heights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Heights.
+     */
+    distinct?: HeightScalarFieldEnum | HeightScalarFieldEnum[]
+  }
+
+  /**
+   * Height findFirstOrThrow
+   */
+  export type HeightFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+    /**
+     * Filter, which Height to fetch.
+     */
+    where?: HeightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Heights to fetch.
+     */
+    orderBy?: HeightOrderByWithRelationInput | HeightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Heights.
+     */
+    cursor?: HeightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Heights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Heights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Heights.
+     */
+    distinct?: HeightScalarFieldEnum | HeightScalarFieldEnum[]
+  }
+
+  /**
+   * Height findMany
+   */
+  export type HeightFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+    /**
+     * Filter, which Heights to fetch.
+     */
+    where?: HeightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Heights to fetch.
+     */
+    orderBy?: HeightOrderByWithRelationInput | HeightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Heights.
+     */
+    cursor?: HeightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Heights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Heights.
+     */
+    skip?: number
+    distinct?: HeightScalarFieldEnum | HeightScalarFieldEnum[]
+  }
+
+  /**
+   * Height create
+   */
+  export type HeightCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Height.
+     */
+    data: XOR<HeightCreateInput, HeightUncheckedCreateInput>
+  }
+
+  /**
+   * Height createMany
+   */
+  export type HeightCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Heights.
+     */
+    data: HeightCreateManyInput | HeightCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Height createManyAndReturn
+   */
+  export type HeightCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * The data used to create many Heights.
+     */
+    data: HeightCreateManyInput | HeightCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Height update
+   */
+  export type HeightUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Height.
+     */
+    data: XOR<HeightUpdateInput, HeightUncheckedUpdateInput>
+    /**
+     * Choose, which Height to update.
+     */
+    where: HeightWhereUniqueInput
+  }
+
+  /**
+   * Height updateMany
+   */
+  export type HeightUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Heights.
+     */
+    data: XOR<HeightUpdateManyMutationInput, HeightUncheckedUpdateManyInput>
+    /**
+     * Filter which Heights to update
+     */
+    where?: HeightWhereInput
+    /**
+     * Limit how many Heights to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Height updateManyAndReturn
+   */
+  export type HeightUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * The data used to update Heights.
+     */
+    data: XOR<HeightUpdateManyMutationInput, HeightUncheckedUpdateManyInput>
+    /**
+     * Filter which Heights to update
+     */
+    where?: HeightWhereInput
+    /**
+     * Limit how many Heights to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Height upsert
+   */
+  export type HeightUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Height to update in case it exists.
+     */
+    where: HeightWhereUniqueInput
+    /**
+     * In case the Height found by the `where` argument doesn't exist, create a new Height with this data.
+     */
+    create: XOR<HeightCreateInput, HeightUncheckedCreateInput>
+    /**
+     * In case the Height was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HeightUpdateInput, HeightUncheckedUpdateInput>
+  }
+
+  /**
+   * Height delete
+   */
+  export type HeightDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+    /**
+     * Filter which Height to delete.
+     */
+    where: HeightWhereUniqueInput
+  }
+
+  /**
+   * Height deleteMany
+   */
+  export type HeightDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Heights to delete
+     */
+    where?: HeightWhereInput
+    /**
+     * Limit how many Heights to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Height without action
+   */
+  export type HeightDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Height
+     */
+    select?: HeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Height
+     */
+    omit?: HeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeightInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4446,6 +5687,18 @@ export namespace Prisma {
   };
 
   export type WordsScalarFieldEnum = (typeof WordsScalarFieldEnum)[keyof typeof WordsScalarFieldEnum]
+
+
+  export const HeightScalarFieldEnum: {
+    id: 'id',
+    height: 'height',
+    unit: 'unit',
+    addedAt: 'addedAt',
+    lastUpdate: 'lastUpdate',
+    childId: 'childId'
+  };
+
+  export type HeightScalarFieldEnum = (typeof HeightScalarFieldEnum)[keyof typeof HeightScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4588,6 +5841,7 @@ export namespace Prisma {
     userId?: IntNullableFilter<"Child"> | number | null
     words?: WordsListRelationFilter
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    Height?: HeightListRelationFilter
   }
 
   export type ChildOrderByWithRelationInput = {
@@ -4597,6 +5851,7 @@ export namespace Prisma {
     userId?: SortOrderInput | SortOrder
     words?: WordsOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
+    Height?: HeightOrderByRelationAggregateInput
   }
 
   export type ChildWhereUniqueInput = Prisma.AtLeast<{
@@ -4610,6 +5865,7 @@ export namespace Prisma {
     userId?: IntNullableFilter<"Child"> | number | null
     words?: WordsListRelationFilter
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    Height?: HeightListRelationFilter
   }, "id" | "name_dateOfBirth">
 
   export type ChildOrderByWithAggregationInput = {
@@ -4692,6 +5948,69 @@ export namespace Prisma {
     childId?: IntWithAggregatesFilter<"Words"> | number
   }
 
+  export type HeightWhereInput = {
+    AND?: HeightWhereInput | HeightWhereInput[]
+    OR?: HeightWhereInput[]
+    NOT?: HeightWhereInput | HeightWhereInput[]
+    id?: IntFilter<"Height"> | number
+    height?: IntFilter<"Height"> | number
+    unit?: StringFilter<"Height"> | string
+    addedAt?: DateTimeFilter<"Height"> | Date | string
+    lastUpdate?: DateTimeFilter<"Height"> | Date | string
+    childId?: IntFilter<"Height"> | number
+    child?: XOR<ChildScalarRelationFilter, ChildWhereInput>
+  }
+
+  export type HeightOrderByWithRelationInput = {
+    id?: SortOrder
+    height?: SortOrder
+    unit?: SortOrder
+    addedAt?: SortOrder
+    lastUpdate?: SortOrder
+    childId?: SortOrder
+    child?: ChildOrderByWithRelationInput
+  }
+
+  export type HeightWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    childId_height?: HeightChildIdHeightCompoundUniqueInput
+    AND?: HeightWhereInput | HeightWhereInput[]
+    OR?: HeightWhereInput[]
+    NOT?: HeightWhereInput | HeightWhereInput[]
+    height?: IntFilter<"Height"> | number
+    unit?: StringFilter<"Height"> | string
+    addedAt?: DateTimeFilter<"Height"> | Date | string
+    lastUpdate?: DateTimeFilter<"Height"> | Date | string
+    childId?: IntFilter<"Height"> | number
+    child?: XOR<ChildScalarRelationFilter, ChildWhereInput>
+  }, "id" | "childId_height">
+
+  export type HeightOrderByWithAggregationInput = {
+    id?: SortOrder
+    height?: SortOrder
+    unit?: SortOrder
+    addedAt?: SortOrder
+    lastUpdate?: SortOrder
+    childId?: SortOrder
+    _count?: HeightCountOrderByAggregateInput
+    _avg?: HeightAvgOrderByAggregateInput
+    _max?: HeightMaxOrderByAggregateInput
+    _min?: HeightMinOrderByAggregateInput
+    _sum?: HeightSumOrderByAggregateInput
+  }
+
+  export type HeightScalarWhereWithAggregatesInput = {
+    AND?: HeightScalarWhereWithAggregatesInput | HeightScalarWhereWithAggregatesInput[]
+    OR?: HeightScalarWhereWithAggregatesInput[]
+    NOT?: HeightScalarWhereWithAggregatesInput | HeightScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Height"> | number
+    height?: IntWithAggregatesFilter<"Height"> | number
+    unit?: StringWithAggregatesFilter<"Height"> | string
+    addedAt?: DateTimeWithAggregatesFilter<"Height"> | Date | string
+    lastUpdate?: DateTimeWithAggregatesFilter<"Height"> | Date | string
+    childId?: IntWithAggregatesFilter<"Height"> | number
+  }
+
   export type UserCreateInput = {
     externalId: string
     children?: ChildCreateNestedManyWithoutUserInput
@@ -4733,6 +6052,7 @@ export namespace Prisma {
     dateOfBirth: Date | string
     words?: WordsCreateNestedManyWithoutChildInput
     user?: UserCreateNestedOneWithoutChildrenInput
+    Height?: HeightCreateNestedManyWithoutChildInput
   }
 
   export type ChildUncheckedCreateInput = {
@@ -4741,6 +6061,7 @@ export namespace Prisma {
     dateOfBirth: Date | string
     userId?: number | null
     words?: WordsUncheckedCreateNestedManyWithoutChildInput
+    Height?: HeightUncheckedCreateNestedManyWithoutChildInput
   }
 
   export type ChildUpdateInput = {
@@ -4748,6 +6069,7 @@ export namespace Prisma {
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     words?: WordsUpdateManyWithoutChildNestedInput
     user?: UserUpdateOneWithoutChildrenNestedInput
+    Height?: HeightUpdateManyWithoutChildNestedInput
   }
 
   export type ChildUncheckedUpdateInput = {
@@ -4756,6 +6078,7 @@ export namespace Prisma {
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     words?: WordsUncheckedUpdateManyWithoutChildNestedInput
+    Height?: HeightUncheckedUpdateManyWithoutChildNestedInput
   }
 
   export type ChildCreateManyInput = {
@@ -4824,6 +6147,65 @@ export namespace Prisma {
   export type WordsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     word?: StringFieldUpdateOperationsInput | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    childId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type HeightCreateInput = {
+    height: number
+    unit: string
+    addedAt?: Date | string
+    lastUpdate?: Date | string
+    child: ChildCreateNestedOneWithoutHeightInput
+  }
+
+  export type HeightUncheckedCreateInput = {
+    id?: number
+    height: number
+    unit: string
+    addedAt?: Date | string
+    lastUpdate?: Date | string
+    childId: number
+  }
+
+  export type HeightUpdateInput = {
+    height?: IntFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    child?: ChildUpdateOneRequiredWithoutHeightNestedInput
+  }
+
+  export type HeightUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    childId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type HeightCreateManyInput = {
+    id?: number
+    height: number
+    unit: string
+    addedAt?: Date | string
+    lastUpdate?: Date | string
+    childId: number
+  }
+
+  export type HeightUpdateManyMutationInput = {
+    height?: IntFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeightUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
     addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
     childId?: IntFieldUpdateOperationsInput | number
@@ -4955,12 +6337,22 @@ export namespace Prisma {
     isNot?: UserWhereInput | null
   }
 
+  export type HeightListRelationFilter = {
+    every?: HeightWhereInput
+    some?: HeightWhereInput
+    none?: HeightWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type WordsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type HeightOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5074,6 +6466,50 @@ export namespace Prisma {
     childId?: SortOrder
   }
 
+  export type HeightChildIdHeightCompoundUniqueInput = {
+    childId: number
+    height: number
+  }
+
+  export type HeightCountOrderByAggregateInput = {
+    id?: SortOrder
+    height?: SortOrder
+    unit?: SortOrder
+    addedAt?: SortOrder
+    lastUpdate?: SortOrder
+    childId?: SortOrder
+  }
+
+  export type HeightAvgOrderByAggregateInput = {
+    id?: SortOrder
+    height?: SortOrder
+    childId?: SortOrder
+  }
+
+  export type HeightMaxOrderByAggregateInput = {
+    id?: SortOrder
+    height?: SortOrder
+    unit?: SortOrder
+    addedAt?: SortOrder
+    lastUpdate?: SortOrder
+    childId?: SortOrder
+  }
+
+  export type HeightMinOrderByAggregateInput = {
+    id?: SortOrder
+    height?: SortOrder
+    unit?: SortOrder
+    addedAt?: SortOrder
+    lastUpdate?: SortOrder
+    childId?: SortOrder
+  }
+
+  export type HeightSumOrderByAggregateInput = {
+    id?: SortOrder
+    height?: SortOrder
+    childId?: SortOrder
+  }
+
   export type ChildCreateNestedManyWithoutUserInput = {
     create?: XOR<ChildCreateWithoutUserInput, ChildUncheckedCreateWithoutUserInput> | ChildCreateWithoutUserInput[] | ChildUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ChildCreateOrConnectWithoutUserInput | ChildCreateOrConnectWithoutUserInput[]
@@ -5141,11 +6577,25 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type HeightCreateNestedManyWithoutChildInput = {
+    create?: XOR<HeightCreateWithoutChildInput, HeightUncheckedCreateWithoutChildInput> | HeightCreateWithoutChildInput[] | HeightUncheckedCreateWithoutChildInput[]
+    connectOrCreate?: HeightCreateOrConnectWithoutChildInput | HeightCreateOrConnectWithoutChildInput[]
+    createMany?: HeightCreateManyChildInputEnvelope
+    connect?: HeightWhereUniqueInput | HeightWhereUniqueInput[]
+  }
+
   export type WordsUncheckedCreateNestedManyWithoutChildInput = {
     create?: XOR<WordsCreateWithoutChildInput, WordsUncheckedCreateWithoutChildInput> | WordsCreateWithoutChildInput[] | WordsUncheckedCreateWithoutChildInput[]
     connectOrCreate?: WordsCreateOrConnectWithoutChildInput | WordsCreateOrConnectWithoutChildInput[]
     createMany?: WordsCreateManyChildInputEnvelope
     connect?: WordsWhereUniqueInput | WordsWhereUniqueInput[]
+  }
+
+  export type HeightUncheckedCreateNestedManyWithoutChildInput = {
+    create?: XOR<HeightCreateWithoutChildInput, HeightUncheckedCreateWithoutChildInput> | HeightCreateWithoutChildInput[] | HeightUncheckedCreateWithoutChildInput[]
+    connectOrCreate?: HeightCreateOrConnectWithoutChildInput | HeightCreateOrConnectWithoutChildInput[]
+    createMany?: HeightCreateManyChildInputEnvelope
+    connect?: HeightWhereUniqueInput | HeightWhereUniqueInput[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -5176,6 +6626,20 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutChildrenInput, UserUpdateWithoutChildrenInput>, UserUncheckedUpdateWithoutChildrenInput>
   }
 
+  export type HeightUpdateManyWithoutChildNestedInput = {
+    create?: XOR<HeightCreateWithoutChildInput, HeightUncheckedCreateWithoutChildInput> | HeightCreateWithoutChildInput[] | HeightUncheckedCreateWithoutChildInput[]
+    connectOrCreate?: HeightCreateOrConnectWithoutChildInput | HeightCreateOrConnectWithoutChildInput[]
+    upsert?: HeightUpsertWithWhereUniqueWithoutChildInput | HeightUpsertWithWhereUniqueWithoutChildInput[]
+    createMany?: HeightCreateManyChildInputEnvelope
+    set?: HeightWhereUniqueInput | HeightWhereUniqueInput[]
+    disconnect?: HeightWhereUniqueInput | HeightWhereUniqueInput[]
+    delete?: HeightWhereUniqueInput | HeightWhereUniqueInput[]
+    connect?: HeightWhereUniqueInput | HeightWhereUniqueInput[]
+    update?: HeightUpdateWithWhereUniqueWithoutChildInput | HeightUpdateWithWhereUniqueWithoutChildInput[]
+    updateMany?: HeightUpdateManyWithWhereWithoutChildInput | HeightUpdateManyWithWhereWithoutChildInput[]
+    deleteMany?: HeightScalarWhereInput | HeightScalarWhereInput[]
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -5198,6 +6662,20 @@ export namespace Prisma {
     deleteMany?: WordsScalarWhereInput | WordsScalarWhereInput[]
   }
 
+  export type HeightUncheckedUpdateManyWithoutChildNestedInput = {
+    create?: XOR<HeightCreateWithoutChildInput, HeightUncheckedCreateWithoutChildInput> | HeightCreateWithoutChildInput[] | HeightUncheckedCreateWithoutChildInput[]
+    connectOrCreate?: HeightCreateOrConnectWithoutChildInput | HeightCreateOrConnectWithoutChildInput[]
+    upsert?: HeightUpsertWithWhereUniqueWithoutChildInput | HeightUpsertWithWhereUniqueWithoutChildInput[]
+    createMany?: HeightCreateManyChildInputEnvelope
+    set?: HeightWhereUniqueInput | HeightWhereUniqueInput[]
+    disconnect?: HeightWhereUniqueInput | HeightWhereUniqueInput[]
+    delete?: HeightWhereUniqueInput | HeightWhereUniqueInput[]
+    connect?: HeightWhereUniqueInput | HeightWhereUniqueInput[]
+    update?: HeightUpdateWithWhereUniqueWithoutChildInput | HeightUpdateWithWhereUniqueWithoutChildInput[]
+    updateMany?: HeightUpdateManyWithWhereWithoutChildInput | HeightUpdateManyWithWhereWithoutChildInput[]
+    deleteMany?: HeightScalarWhereInput | HeightScalarWhereInput[]
+  }
+
   export type ChildCreateNestedOneWithoutWordsInput = {
     create?: XOR<ChildCreateWithoutWordsInput, ChildUncheckedCreateWithoutWordsInput>
     connectOrCreate?: ChildCreateOrConnectWithoutWordsInput
@@ -5210,6 +6688,20 @@ export namespace Prisma {
     upsert?: ChildUpsertWithoutWordsInput
     connect?: ChildWhereUniqueInput
     update?: XOR<XOR<ChildUpdateToOneWithWhereWithoutWordsInput, ChildUpdateWithoutWordsInput>, ChildUncheckedUpdateWithoutWordsInput>
+  }
+
+  export type ChildCreateNestedOneWithoutHeightInput = {
+    create?: XOR<ChildCreateWithoutHeightInput, ChildUncheckedCreateWithoutHeightInput>
+    connectOrCreate?: ChildCreateOrConnectWithoutHeightInput
+    connect?: ChildWhereUniqueInput
+  }
+
+  export type ChildUpdateOneRequiredWithoutHeightNestedInput = {
+    create?: XOR<ChildCreateWithoutHeightInput, ChildUncheckedCreateWithoutHeightInput>
+    connectOrCreate?: ChildCreateOrConnectWithoutHeightInput
+    upsert?: ChildUpsertWithoutHeightInput
+    connect?: ChildWhereUniqueInput
+    update?: XOR<XOR<ChildUpdateToOneWithWhereWithoutHeightInput, ChildUpdateWithoutHeightInput>, ChildUncheckedUpdateWithoutHeightInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -5348,6 +6840,7 @@ export namespace Prisma {
     name: string
     dateOfBirth: Date | string
     words?: WordsCreateNestedManyWithoutChildInput
+    Height?: HeightCreateNestedManyWithoutChildInput
   }
 
   export type ChildUncheckedCreateWithoutUserInput = {
@@ -5355,6 +6848,7 @@ export namespace Prisma {
     name: string
     dateOfBirth: Date | string
     words?: WordsUncheckedCreateNestedManyWithoutChildInput
+    Height?: HeightUncheckedCreateNestedManyWithoutChildInput
   }
 
   export type ChildCreateOrConnectWithoutUserInput = {
@@ -5430,6 +6924,31 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutChildrenInput, UserUncheckedCreateWithoutChildrenInput>
   }
 
+  export type HeightCreateWithoutChildInput = {
+    height: number
+    unit: string
+    addedAt?: Date | string
+    lastUpdate?: Date | string
+  }
+
+  export type HeightUncheckedCreateWithoutChildInput = {
+    id?: number
+    height: number
+    unit: string
+    addedAt?: Date | string
+    lastUpdate?: Date | string
+  }
+
+  export type HeightCreateOrConnectWithoutChildInput = {
+    where: HeightWhereUniqueInput
+    create: XOR<HeightCreateWithoutChildInput, HeightUncheckedCreateWithoutChildInput>
+  }
+
+  export type HeightCreateManyChildInputEnvelope = {
+    data: HeightCreateManyChildInput | HeightCreateManyChildInput[]
+    skipDuplicates?: boolean
+  }
+
   export type WordsUpsertWithWhereUniqueWithoutChildInput = {
     where: WordsWhereUniqueInput
     update: XOR<WordsUpdateWithoutChildInput, WordsUncheckedUpdateWithoutChildInput>
@@ -5477,10 +6996,39 @@ export namespace Prisma {
     externalId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type HeightUpsertWithWhereUniqueWithoutChildInput = {
+    where: HeightWhereUniqueInput
+    update: XOR<HeightUpdateWithoutChildInput, HeightUncheckedUpdateWithoutChildInput>
+    create: XOR<HeightCreateWithoutChildInput, HeightUncheckedCreateWithoutChildInput>
+  }
+
+  export type HeightUpdateWithWhereUniqueWithoutChildInput = {
+    where: HeightWhereUniqueInput
+    data: XOR<HeightUpdateWithoutChildInput, HeightUncheckedUpdateWithoutChildInput>
+  }
+
+  export type HeightUpdateManyWithWhereWithoutChildInput = {
+    where: HeightScalarWhereInput
+    data: XOR<HeightUpdateManyMutationInput, HeightUncheckedUpdateManyWithoutChildInput>
+  }
+
+  export type HeightScalarWhereInput = {
+    AND?: HeightScalarWhereInput | HeightScalarWhereInput[]
+    OR?: HeightScalarWhereInput[]
+    NOT?: HeightScalarWhereInput | HeightScalarWhereInput[]
+    id?: IntFilter<"Height"> | number
+    height?: IntFilter<"Height"> | number
+    unit?: StringFilter<"Height"> | string
+    addedAt?: DateTimeFilter<"Height"> | Date | string
+    lastUpdate?: DateTimeFilter<"Height"> | Date | string
+    childId?: IntFilter<"Height"> | number
+  }
+
   export type ChildCreateWithoutWordsInput = {
     name: string
     dateOfBirth: Date | string
     user?: UserCreateNestedOneWithoutChildrenInput
+    Height?: HeightCreateNestedManyWithoutChildInput
   }
 
   export type ChildUncheckedCreateWithoutWordsInput = {
@@ -5488,6 +7036,7 @@ export namespace Prisma {
     name: string
     dateOfBirth: Date | string
     userId?: number | null
+    Height?: HeightUncheckedCreateNestedManyWithoutChildInput
   }
 
   export type ChildCreateOrConnectWithoutWordsInput = {
@@ -5510,6 +7059,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutChildrenNestedInput
+    Height?: HeightUpdateManyWithoutChildNestedInput
   }
 
   export type ChildUncheckedUpdateWithoutWordsInput = {
@@ -5517,6 +7067,53 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    Height?: HeightUncheckedUpdateManyWithoutChildNestedInput
+  }
+
+  export type ChildCreateWithoutHeightInput = {
+    name: string
+    dateOfBirth: Date | string
+    words?: WordsCreateNestedManyWithoutChildInput
+    user?: UserCreateNestedOneWithoutChildrenInput
+  }
+
+  export type ChildUncheckedCreateWithoutHeightInput = {
+    id?: number
+    name: string
+    dateOfBirth: Date | string
+    userId?: number | null
+    words?: WordsUncheckedCreateNestedManyWithoutChildInput
+  }
+
+  export type ChildCreateOrConnectWithoutHeightInput = {
+    where: ChildWhereUniqueInput
+    create: XOR<ChildCreateWithoutHeightInput, ChildUncheckedCreateWithoutHeightInput>
+  }
+
+  export type ChildUpsertWithoutHeightInput = {
+    update: XOR<ChildUpdateWithoutHeightInput, ChildUncheckedUpdateWithoutHeightInput>
+    create: XOR<ChildCreateWithoutHeightInput, ChildUncheckedCreateWithoutHeightInput>
+    where?: ChildWhereInput
+  }
+
+  export type ChildUpdateToOneWithWhereWithoutHeightInput = {
+    where?: ChildWhereInput
+    data: XOR<ChildUpdateWithoutHeightInput, ChildUncheckedUpdateWithoutHeightInput>
+  }
+
+  export type ChildUpdateWithoutHeightInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    words?: WordsUpdateManyWithoutChildNestedInput
+    user?: UserUpdateOneWithoutChildrenNestedInput
+  }
+
+  export type ChildUncheckedUpdateWithoutHeightInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    words?: WordsUncheckedUpdateManyWithoutChildNestedInput
   }
 
   export type ChildCreateManyUserInput = {
@@ -5529,6 +7126,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     words?: WordsUpdateManyWithoutChildNestedInput
+    Height?: HeightUpdateManyWithoutChildNestedInput
   }
 
   export type ChildUncheckedUpdateWithoutUserInput = {
@@ -5536,6 +7134,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     words?: WordsUncheckedUpdateManyWithoutChildNestedInput
+    Height?: HeightUncheckedUpdateManyWithoutChildNestedInput
   }
 
   export type ChildUncheckedUpdateManyWithoutUserInput = {
@@ -5547,6 +7146,14 @@ export namespace Prisma {
   export type WordsCreateManyChildInput = {
     id?: number
     word: string
+    addedAt?: Date | string
+    lastUpdate?: Date | string
+  }
+
+  export type HeightCreateManyChildInput = {
+    id?: number
+    height: number
+    unit: string
     addedAt?: Date | string
     lastUpdate?: Date | string
   }
@@ -5567,6 +7174,29 @@ export namespace Prisma {
   export type WordsUncheckedUpdateManyWithoutChildInput = {
     id?: IntFieldUpdateOperationsInput | number
     word?: StringFieldUpdateOperationsInput | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeightUpdateWithoutChildInput = {
+    height?: IntFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeightUncheckedUpdateWithoutChildInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
+    addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeightUncheckedUpdateManyWithoutChildInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    height?: IntFieldUpdateOperationsInput | number
+    unit?: StringFieldUpdateOperationsInput | string
     addedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastUpdate?: DateTimeFieldUpdateOperationsInput | Date | string
   }

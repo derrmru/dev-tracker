@@ -140,6 +140,15 @@ exports.Prisma.WordsScalarFieldEnum = {
   childId: 'childId'
 };
 
+exports.Prisma.HeightScalarFieldEnum = {
+  id: 'id',
+  height: 'height',
+  unit: 'unit',
+  addedAt: 'addedAt',
+  lastUpdate: 'lastUpdate',
+  childId: 'childId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -159,7 +168,8 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   Child: 'Child',
-  Words: 'Words'
+  Words: 'Words',
+  Height: 'Height'
 };
 
 /**

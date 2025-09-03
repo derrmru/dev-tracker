@@ -92,6 +92,11 @@ export class SqlChildRepository {
           childId: id,
         },
       });
+      await tx.heights.deleteMany({
+        where: {
+          childId: id,
+        },
+      });
       await tx.child.delete({
         where: {
           id,
